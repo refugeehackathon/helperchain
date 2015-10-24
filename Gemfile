@@ -8,6 +8,9 @@ gem "pg"
 gem 'composite_primary_keys'
 gem "squeel"
 
+# Admin stuff
+gem "rails_admin"
+
 # Jobs
 gem 'sidekiq'
 
