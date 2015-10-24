@@ -1,8 +1,8 @@
 class CreateRequestStatuses < ActiveRecord::Migration
   def change
-    create_table :request_statuses, id: :uuid do |t|
-      t.uuid :request_id, index: true, null: false
-      t.uuid :helper_id, index: true, null: false
+    create_table :request_statuses do |t|
+      t.integer :request_id, index: true, null: false
+      t.integer :helper_id, index: true, null: false
       t.boolean :accepted, null: true
       t.boolean :timeout, null: false, default: false
 

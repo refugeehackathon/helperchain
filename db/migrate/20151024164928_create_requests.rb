@@ -1,7 +1,7 @@
 class CreateRequests < ActiveRecord::Migration
   def change
-    create_table :requests, id: :uuid do |t|
-      t.uuid :organization_id, null: false
+    create_table :requests do |t|
+      t.integer :organization_id, null: false
       t.string :name, null: false
       t.text :description, null: false
       t.text :description_after_accept, null: true
