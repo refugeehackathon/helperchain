@@ -11,6 +11,9 @@ gem "squeel"
 # Admin stuff
 gem "rails_admin"
 
+# GUI
+gem 'simple_form'
+
 # Jobs
 gem 'sidekiq'
 

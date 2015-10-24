@@ -1,0 +1,23 @@
+<%= simple_form_for(@organization) do |f| %>
+  <% @user.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end unless @user.nil? or @user.errors.empty?%>
+  <% @organization.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end%>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, required: true %>
+
+    <%= f.simple_fields_for @user do |b| %>
+      <%= b.input :email, required: true, as: :email %>
+      <%= b.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      <%= b.input :password_confirmation, required: true %>
+    <% end unless @user.nil? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
