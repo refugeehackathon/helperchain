@@ -21,8 +21,15 @@ gem "cancancan"
 # Dev stuff
 group :development do
   gem 'quiet_assets'
-  gem 'spring' # Speed up development server
   gem 'railroady'
+end
+
+group :development, :test do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
 end
 
 gem 'pry'              # Better IRB
@@ -47,11 +54,3 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-group :development, :test do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-end

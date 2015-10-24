@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  request_id: 
+  helper_id: 
+  accepted: false
+  timeout: false
+
+two:
+  request_id: 
+  helper_id: 
+  accepted: false
+  timeout: false
