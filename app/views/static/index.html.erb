@@ -64,6 +64,7 @@
   </div>
   <!-- End Service Blokcs -->
 
+  <%= simple_form_for @helper , defaults: { input_html: { class: 'sky-form' } } do |f| %>
   <!--=== Sign-Out Block ===-->
   <div class="purchase">
     <div class="container">
@@ -77,14 +78,15 @@
           <div class="col-md-3">
             <label class="input">
               <i class="icon-prepend fa fa-envelope"></i>
-              <input type="email" name="email" placeholder="<%= I18n.t "email" %>">
+              <%= f.text_field :email, required: true %>
             </label>
-            <a href="#" class="btn-u btn-u-lg"><i class="fa fa-heart"></i> <%= I18n.t "leave" %></a>
+            <%= f.button :submit, (I18n.t "leave"), class: "btn-u btn-u-lg" %>
           </div>
         </form>
       </div>
     </div>
   </div><!--/row-->
+  <% end %>
   <!-- End Sign-Out Block -->
 
 </div><!--/container-->

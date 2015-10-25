@@ -4,12 +4,25 @@ class HelpersController < ApplicationController
     @helper.lat = 0
     @helper.long = 0
     if @helper.save
-      redirect_to root_path, flash:{success: 'You will receive an e-mail with your account activation link.'}
+      redirect_to root_path, flash:{success: I18n.t("join_success")}
     else
-      redirect_to root_path, flash:{danger: 'An error occured.'}
+      redirect_to root_path, flash:{danger: I18n.t("join_error")}
     end
   end
 
-  def delete
+  def createconfirmation
   end
+
+  def delete
+    @helper = Helper.delete params[:helper].permit(:email)
+    if @helper.delete
+      redirect_to root_path, flash:{success: I18n.t("leave_success")}
+    else
+      redirect_to root_path, flash:{danger: I18n.t("leave_error")}
+    end
+  end
+
+  def deleteconfirmation
+  end
+
 end
