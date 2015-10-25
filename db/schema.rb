@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025091216) do
+ActiveRecord::Schema.define(version: 20151025105953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "helpers", force: :cascade do |t|
     t.string   "email",                    null: false
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 20151025091216) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "score",      default: 100, null: false
+    t.string   "location",                 null: false
   end
 
   create_table "orga_members", force: :cascade do |t|

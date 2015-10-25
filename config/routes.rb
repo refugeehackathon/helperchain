@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+
   # Static stuff
-  root 'static#index'  
+  root 'static#index'
   get 'contactimprint' => 'static#contactimprint'
 
   # Controllers
   resources :organizations
+  resources :helpers
 
   # Admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
