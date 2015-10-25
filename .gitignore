@@ -18,3 +18,4 @@
 /tmp
 *~
 *\#*
+db/schema.rb
