@@ -1,7 +1,7 @@
 <%= simple_form_for(@organization) do |f| %>
-  <% @user.errors.full_messages.each do |msg| %>
+  <% @orga_member.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
-  <% end unless @user.nil? or @user.errors.empty?%>
+  <% end unless @orga_member.nil? or @orga_member.errors.empty?%>
   <% @organization.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
   <% end%>
@@ -10,11 +10,11 @@
   <div class="form-inputs">
     <%= f.input :name, required: true %>
 
-    <%= f.simple_fields_for @user do |b| %>
+    <%= f.simple_fields_for @orga_member do |b| %>
       <%= b.input :email, required: true, as: :email %>
       <%= b.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
       <%= b.input :password_confirmation, required: true %>
-    <% end unless @user.nil? %>
+    <% end unless @orga_member.nil? %>
   </div>
 
   <div class="form-actions">
