@@ -31,6 +31,9 @@ group :development do
   gem 'railroady'
 end
 
+# Mail
+gem 'mailgun_rails'
+
 group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

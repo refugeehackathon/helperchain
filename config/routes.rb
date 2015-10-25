@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :requests
   end
   resources :helpers
+  get 'helpers/confirm/:confirmation_key' => 'helpers#confirm', as: :helper_confirm
 
   # Sidekiq
   require 'sidekiq/web'

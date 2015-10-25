@@ -51,8 +51,13 @@
 
             <!-- Topbar -->
             <div class="topbar">
-                <ul class="loginbar pull-right">
-                    <li><%= link_to I18n.t("login"), new_orga_member_session_path %></li>
+              <ul class="loginbar pull-right">
+                <% unless current_orga_member.nil? %>
+                  <li><%= I18n.t "hello_orga_member", email: current_orga_member.email %></li>
+                  <li><%= link_to I18n.t("logout"), destroy_orga_member_session_path, method: :delete %>
+                <% else %>
+                  <li><%= link_to I18n.t("login"), new_orga_member_session_path %></li>
+                <% end %>
                 </ul>
             </div>
             <!-- End Topbar -->
