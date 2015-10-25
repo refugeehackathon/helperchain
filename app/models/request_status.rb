@@ -1,4 +1,5 @@
 class RequestStatus < ActiveRecord::Base
   belongs_to :request
-  has_many :helpers
+  belongs_to :helper
+
 end
