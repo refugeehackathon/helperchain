@@ -6,6 +6,8 @@
 </p>
 <% if can? :manage, @organization %>
 
+<%= link_to I18n.t("new_request"), new_organization_request_path(@organization)%>
+
 <table>
   <thead>
     <tr>

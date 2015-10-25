@@ -15,7 +15,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
-    @user = User.new
+    @user = OrgaMember.new
   end
 
   # GET /organizations/1/edit
@@ -25,7 +25,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   def create
     @organization = Organization.new(organization_params)
-    @user = User.new params[:organization][:user].permit(:email, :password, :password_confirmation)
+    @user = OrgaMember.new params[:organization][:user].permit(:email, :password, :password_confirmation)
     begin
       ActiveRecord::Base.transaction do
         if @organization.save

@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
+    user ||= OrgaMember.new # guest user (not logged in)
     can :create, Organization
     can :index, Organization
     can :show, Organization
@@ -12,7 +12,6 @@ class Ability
     can :manage, Request, organization: user.organization
     # Define abilities for the passed in user here. For example:
     #
-    #   user ||= User.new # guest user (not logged in)
     #   if user.admin?
     #     can :manage, :all
     #   else
