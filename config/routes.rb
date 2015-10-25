@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # Static stuff
+  root 'static#index'  
+  get 'contactimprint' => 'static#contactimprint'
+
+  # Controllers
   resources :organizations
+
+  # Admin
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
