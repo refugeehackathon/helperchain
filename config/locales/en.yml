@@ -27,10 +27,10 @@ en:
   # index
   join_h: "helperchain - The digital chain of help"
   join_p: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos."
-  join: "<i class='fa fa-heart'></i> Join the list!"
+  join: "Join the list!"
   join_success: "You will receive an e-mail with your account activation link."
   join_error: "An error occured."
-  leave: "<i class='fa fa-heart'></i> Leave the list!"
+  leave: "Leave the list!"
   leave_h: "Stopping your support?"
   leave_p: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos."
   leave_success: "You will receive an e-mail for confirming your account deactivation."

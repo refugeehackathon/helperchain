@@ -22,7 +22,9 @@
           <i class="icon-prepend fa fa-location-arrow"></i>
           <%= f.text_field :location, required: true %>
         </label>
-        <%= f.button :submit, (I18n.t "join"), class: "btn-u btn-u-lg" %>
+        <button type="submit" class="btn-u btn-u-lg">
+          <i class="fa fa-heart"></i> <%= I18n.t "join"%>
+        </button>
       </div>
     </div>
   </div>
@@ -80,7 +82,10 @@
               <i class="icon-prepend fa fa-envelope"></i>
               <%= f.text_field :email, required: true %>
             </label>
-            <%= f.button :submit, (I18n.t "leave"), class: "btn-u btn-u-lg" %>
+
+            <button type="submit" class="btn-u btn-u-lg">
+              <i class="fa fa-heart"></i> <%= I18n.t("leave")%>
+            </button>
           </div>
         </form>
       </div>
