@@ -16,6 +16,7 @@ gem 'simple_form'
 
 # Jobs
 gem 'sidekiq'
+gem 'sinatra', :require => nil
 
 # GIS
 gem 'geokit-rails'

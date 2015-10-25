@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   end
   resources :helpers
 
+  # Sidekiq
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   # Admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :orga_members
