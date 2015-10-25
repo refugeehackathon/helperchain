@@ -4,9 +4,9 @@ class HelpersController < ApplicationController
     @helper.lat = 0
     @helper.long = 0
     if @helper.save
-      redirect_to root_path, notice: 'You will receive an e-mail with your account activation link.'
+      redirect_to root_path, flash:{success: 'You will receive an e-mail with your account activation link.'}
     else
-      redirect_to root_path, flash:{warning: 'An error occured.'}
+      redirect_to root_path, flash:{danger: 'An error occured.'}
     end
   end
 
