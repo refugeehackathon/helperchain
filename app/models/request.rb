@@ -1,8 +1,7 @@
 class Request < ActiveRecord::Base
+  belongs_to :organization
   has_many :request_statuses
   has_and_belongs_to_many :helpers, join_table: :request_statuses
-  belongs_to :organization
-
 
   def next_user()
     r = self.helpers # because self doesn't work in squeel

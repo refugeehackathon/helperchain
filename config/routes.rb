@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-
   # Static stuff
   root 'static#index'
   get 'contactimprint' => 'static#contactimprint'
 
   # Controllers
-  resources :organizations
+  resources :organizations do
+    resources :requests
+  end
   resources :helpers
 
   # Admin

@@ -1,0 +1,28 @@
+<%= simple_form_for([@organization,@request]) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+        <% @request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :lat %>
+  <%= f.input :long %>
+  <%= f.input :amount %>
+
+  <%= f.input :start %>
+  <%= f.input :end %>
+  <%= f.input :timeout %>
+  <%= f.input :range %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

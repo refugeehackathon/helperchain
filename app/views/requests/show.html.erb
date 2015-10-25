@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @request.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @request.description %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @request.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @request.long %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @request.amount %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @request.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @request.end %>
+</p>
+
+<p>
+  <strong>Timeout:</strong>
+  <%= @request.timeout %>
+</p>
+
+<p>
+  <strong>Range:</strong>
+  <%= @request.range %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @request.organization_id %>
+</p>
+
+<%= link_to 'Edit', edit_organization_request_path(@organization, @request) %> |
+<%= link_to 'Back', organization_path(@organization) %>
