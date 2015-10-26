@@ -10,7 +10,7 @@ class HelpersController < ApplicationController
     end
     @helper.confirmation_key = SecureRandom.urlsafe_base64
     if @helper.save
-      OptInMailer.optin_mail(@helper).deliver
+      HelperMailer.optin_mail(@helper).deliver
       redirect_to root_path, flash:{success: I18n.t("join_success")}
     else
       redirect_to root_path, flash:{danger: I18n.t("join_error")}
@@ -27,19 +27,17 @@ class HelpersController < ApplicationController
     else
       redirect_to root_path, flash:{danger: I18n.t("no_confirmation")}
     end
-
   end
 
   def delete
-    @helper = Helper.delete params[:helper].permit(:email)
-    if @helper.delete
+    email = params[:email] || (params[:helper] && params[:helper][:email])
+    @helper = Helper.find_by_email email
+    if (not @helper.nil?) and @helper.delete
       redirect_to root_path, flash:{success: I18n.t("leave_success")}
     else
-      redirect_to root_path, flash:{danger: I18n.t("leave_error")}
+      # Success because otherwise it is possible to determine whether
+      # an email is present in our system
+      redirect_to root_path, flash:{success: I18n.t("leave_success")}
     end
   end
-
-  def deleteconfirmation
-  end
-
 end

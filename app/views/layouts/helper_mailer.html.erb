@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <%= yield %>
+
+    <p>
+      <%= I18n.t "mail.unsubscribe_text"%><br />
+      <%=link_to(helpers_unsubscribe_url(email: @helper.email), helpers_unsubscribe_url(email: @helper.email))%>
+    </p>
+  </body>
+</html>

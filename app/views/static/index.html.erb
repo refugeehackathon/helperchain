@@ -66,12 +66,13 @@
   </div>
   <!-- End Service Blokcs -->
 
-  <%= simple_form_for @helper , defaults: { input_html: { class: 'sky-form' } } do |f| %>
   <!--=== Sign-Out Block ===-->
   <div class="purchase">
     <div class="container">
       <div class="row">
-        <form action="#" id="sky-form" class="sky-form">
+        <%= simple_form_for @helper , defaults: { input_html: { class: 'sky-form' } },
+          url: helpers_unsubscribe_path,
+          method: :get do |f| %>
           <div class="col-md-6">
             <span><%= I18n.t "leave_h" %></span>
             <p><%= I18n.t "leave_p" %></p>
@@ -87,11 +88,10 @@
               <i class="fa fa-heart"></i> <%= I18n.t("leave")%>
             </button>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
   </div><!--/row-->
-  <% end %>
   <!-- End Sign-Out Block -->
 
 </div><!--/container-->

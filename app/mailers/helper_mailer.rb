@@ -1,4 +1,5 @@
-class OptInMailer < ApplicationMailer
+class HelperMailer < ApplicationMailer
+  layout 'helper_mailer'
 
   def optin_mail(helper)
     @helper = helper

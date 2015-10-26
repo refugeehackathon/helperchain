@@ -52,3 +52,4 @@ en:
   logout: "Logout"
   mail:
     optin_hello: "Welcome to HelperChain"
+    unsubscribe_text: "Unsubscribe:"

@@ -1,0 +1,5 @@
+<%= yield %>
+
+---
+<%= I18n.t "mail.unsubscribe_text"%>
+<%=link_to(helpers_unsubscribe_url(email: @helper.email), helpers_unsubscribe_url(email: @helper.email))%>
