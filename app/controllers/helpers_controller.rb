@@ -32,12 +32,19 @@ class HelpersController < ApplicationController
   def delete
     email = params[:email] || (params[:helper] && params[:helper][:email])
     @helper = Helper.find_by_email email
-    if (not @helper.nil?) and @helper.delete
-      redirect_to root_path, flash:{success: I18n.t("leave_success")}
+    unless @helper.nil?
+      confirmation_key = params[:confirmation_key]
+      if confirmation_key == @helper.confirmation_key
+        @helper.delete
+        redirect_to root_path, flash:{success: I18n.t("leave_success")}
+      else
+        HelperMailer.optout_mail(@helper).deliver
+        redirect_to root_path, flash:{success: I18n.t("mail.optout_sent")}
+      end
     else
       # Success because otherwise it is possible to determine whether
       # an email is present in our system
-      redirect_to root_path, flash:{success: I18n.t("leave_success")}
+      redirect_to root_path, flash:{success: I18n.t("mail.optout_sent")}
     end
   end
 end

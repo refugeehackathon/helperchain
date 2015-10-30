@@ -1,0 +1,2 @@
+<h1><%= I18n.t "mail.optout_hello" %></h1>
+<%= link_to I18n.t("mail.optout_link"), helpers_unsubscribe_url(email: @helper.email, confirmation_key: @helper.confirmation_key) %>

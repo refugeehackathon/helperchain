@@ -8,7 +8,7 @@
 
     <p>
       <%= I18n.t "mail.unsubscribe_text"%><br />
-      <%=link_to(helpers_unsubscribe_url(email: @helper.email), helpers_unsubscribe_url(email: @helper.email))%>
+      <%= link_to I18n.t("mail.optout_link"), helpers_unsubscribe_url(email: @helper.email, confirmation_key: @helper.confirmation_key) %>
     </p>
   </body>
 </html>

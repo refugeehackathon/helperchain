@@ -33,7 +33,6 @@ en:
   leave: "Leave the list!"
   leave_h: "Stopping your support?"
   leave_p: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos."
-  leave_success: "You will receive an e-mail for confirming your account deactivation."
   leave_error: "An error occured."
   home_step1_h: "Register your e-mail"
   home_step1_p: "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem..."
@@ -53,3 +52,4 @@ en:
   mail:
     optin_hello: "Welcome to HelperChain"
     unsubscribe_text: "Unsubscribe:"
+    optout_sent: "You will receive an e-mail for confirming your account deactivation."

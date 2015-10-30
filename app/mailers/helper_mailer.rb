@@ -3,6 +3,11 @@ class HelperMailer < ApplicationMailer
 
   def optin_mail(helper)
     @helper = helper
-    mail(to: @helper.email, subject: I18n.t("optin_mail"))
+    mail(to: @helper.email, subject: I18n.t("mail.optin_subject"))
+  end
+
+  def optout_mail(helper)
+    @helper = helper
+    mail(to: @helper.email, subject: I18n.t("mail.optout_subject"))
   end
 end
