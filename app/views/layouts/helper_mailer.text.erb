@@ -1,5 +1,5 @@
 <%= yield %>
 
 ---
-<%= I18n.t "mail.unsubscribe_text"%>
+<%= I18n.t "helpers.unsubscribe_text"%>
 <%= helpers_unsubscribe_url(email: @helper.email, confirmation_key: @helper.confirmation_key) %>

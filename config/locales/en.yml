@@ -28,8 +28,6 @@ en:
   join_h: "helperchain - The digital chain of help"
   join_p: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos."
   join: "Join the list!"
-  join_success: "You will receive an e-mail with your account activation link."
-  join_error: "An error occured."
   leave: "Leave the list!"
   leave_h: "Stopping your support?"
   leave_p: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos."
@@ -51,5 +49,12 @@ en:
   logout: "Logout"
   mail:
     optin_hello: "Welcome to HelperChain"
+  helpers:
     unsubscribe_text: "Unsubscribe:"
+    join_success: "You will receive an e-mail with your account activation link."
+    join_error: "An error occured."
+    confirmed: "Thank you for confirming your e-mail"
+    no_confirmation: "Could not find that helper"
+    leave_success: "You have been unsubscribed successfully"
     optout_sent: "You will receive an e-mail for confirming your account deactivation."
+    optout_link: "Unsubscribe"

@@ -11,9 +11,9 @@ class HelpersController < ApplicationController
     @helper.confirmation_key = SecureRandom.urlsafe_base64
     if @helper.save
       HelperMailer.optin_mail(@helper).deliver
-      redirect_to root_path, flash:{success: I18n.t("join_success")}
+      redirect_to root_path, flash:{success: I18n.t("helpers.join_success")}
     else
-      redirect_to root_path, flash:{danger: I18n.t("join_error")}
+      redirect_to root_path, flash:{danger: I18n.t("helpers.join_error")}
     end
   end
 
@@ -23,9 +23,9 @@ class HelpersController < ApplicationController
     unless @helper.nil?
       @helper.validated = true
       @helper.save
-      redirect_to root_path, flash:{success: I18n.t("confirmed")}
+      redirect_to root_path, flash:{success: I18n.t("helpers.confirmed")}
     else
-      redirect_to root_path, flash:{danger: I18n.t("no_confirmation")}
+      redirect_to root_path, flash:{danger: I18n.t("helpers.no_confirmation")}
     end
   end
 
@@ -36,15 +36,15 @@ class HelpersController < ApplicationController
       confirmation_key = params[:confirmation_key]
       if confirmation_key == @helper.confirmation_key
         @helper.delete
-        redirect_to root_path, flash:{success: I18n.t("leave_success")}
+        redirect_to root_path, flash:{success: I18n.t("helpers.leave_success")}
       else
         HelperMailer.optout_mail(@helper).deliver
-        redirect_to root_path, flash:{success: I18n.t("mail.optout_sent")}
+        redirect_to root_path, flash:{success: I18n.t("helpers.optout_sent")}
       end
     else
       # Success because otherwise it is possible to determine whether
       # an email is present in our system
-      redirect_to root_path, flash:{success: I18n.t("mail.optout_sent")}
+      redirect_to root_path, flash:{success: I18n.t("helpers.optout_sent")}
     end
   end
 end
