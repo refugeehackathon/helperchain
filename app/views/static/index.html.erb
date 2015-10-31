@@ -1,8 +1,3 @@
-<!--=== Notification Block ===-->
-<% flash.each do |name, msg| %>
-<%= content_tag :div, msg, class: "alert alert-#{name}" %>
-<% end %>
-<!-- End Notofication Block -->
 
 <!--=== Sign-In Block ===-->
 <%= simple_form_for @helper , defaults: { input_html: { class: 'sky-form' } } do |f| %>

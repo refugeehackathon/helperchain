@@ -28,7 +28,6 @@
 	<%= csrf_meta_tags %>
 
     <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- CSS Header and Footer -->
@@ -39,9 +38,6 @@
     <link rel="stylesheet" href="/assets/plugins/animate.css">
     <link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css">
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
-
-    <!-- CSS Customization -->
-    <link rel="stylesheet" href="/assets/css/custom.css">
   </head>
 
   <body>
@@ -94,6 +90,14 @@
         </div><!--/navbar-collapse-->
       </div>
       <!--=== End Header ===-->
+      <!--=== Notification Block ===-->
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name%>">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= msg %>
+        </div>
+      <% end %>
+      <!-- End Notofication Block -->
 
 	  <%= yield %>
 
@@ -177,15 +181,6 @@
       <!--=== End Footer Version 1 ===-->
     </div><!--/wrapper-->
 
-    <!-- JS Global Compulsory -->
-    <script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script>
-    <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- JS Implementing Plugins -->
-    <script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
-    <script type="text/javascript" src="/assets/plugins/smoothScroll.js"></script>
-    <!-- JS Customization -->
-    <script type="text/javascript" src="/assets/js/custom.js"></script>
     <!-- JS Page Level -->
     <script type="text/javascript" src="/assets/js/app.js"></script>
     <!--[if lt IE 9]>
