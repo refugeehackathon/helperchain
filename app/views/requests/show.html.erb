@@ -45,10 +45,5 @@
   <%= @request.range %>
 </p>
 
-<p>
-  <strong>Organization:</strong>
-  <%= @request.organization_id %>
-</p>
-
-<%= link_to 'Edit', edit_organization_request_path(@organization, @request) %> |
-<%= link_to 'Back', organization_path(@organization) %>
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

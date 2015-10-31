@@ -52,6 +52,10 @@ en:
     faq: "FAQ"
     for_organizations: "For organizations"
     imprint: "Kontakt und Impressum"
+    manage_requests: "Manage requests"
+    manage_organization: "Manage organization"
+    organization_list: "Organizations"
+
   orga:
     login: "Login"
     logout: "Logout"

@@ -80,13 +80,15 @@
         <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
           <div class="container">
             <ul class="nav navbar-nav">
-              <!-- Home -->
-              <li>
-                  <%= link_to I18n.t("nav.for_organizations"), new_organization_path %>
-			  </li>
-              <li>
-                  <%= link_to I18n.t("nav.faq"), faq_path %>
-			  </li>
+              <% unless current_orga_member.nil? %>
+                <%= active_li_link_to I18n.t("nav.manage_organization"), organization_path(current_orga_member.organization), class: "foo" %>
+                <%= active_li_link_to I18n.t("nav.manage_requests"), requests_path %>
+              <% else %>
+                <!-- Home -->
+                <%= active_li_link_to I18n.t("nav.for_organizations"), new_organization_path %>
+              <% end %>
+              <%= active_li_link_to I18n.t("nav.organization_list"), organizations_path %>
+              <%= active_li_link_to I18n.t("nav.faq"), faq_path %>
             </ul>
           </div><!--/end container-->
         </div><!--/navbar-collapse-->

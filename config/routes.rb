@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   get 'imprint' => 'static#contactimprint'
 
   # Controllers
-  resources :organizations do
-    resources :requests
-  end
+  resources :organizations
+  resources :requests
   scope :helpers do
     get 'confirm/:confirmation_key' => 'helpers#confirm', as: :helpers_confirm
     get 'unsubscribe' => 'helpers#delete', as: :helpers_unsubscribe

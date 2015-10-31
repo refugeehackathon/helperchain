@@ -4,48 +4,6 @@
   <strong>Name:</strong>
   <%= @organization.name %>
 </p>
-<% if can? :manage, @organization %>
-
-<%= link_to I18n.t("new_request"), new_organization_request_path(@organization)%>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Lat</th>
-      <th>Long</th>
-      <th>Amount</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Timeout</th>
-      <th>Range</th>
-      <th>Organization</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @organization.requests.each do |request| %>
-      <tr>
-        <td><%= request.name %></td>
-        <td><%= request.description %></td>
-        <td><%= request.lat %></td>
-        <td><%= request.long %></td>
-        <td><%= request.amount %></td>
-        <td><%= request.start %></td>
-        <td><%= request.end %></td>
-        <td><%= request.timeout %></td>
-        <td><%= request.range %></td>
-        <td><%= request.organization_id %></td>
-        <td><%= link_to 'Show', [@organization, request] %></td>
-        <td><%= link_to 'Edit', edit_organization_request_path(@organization, request) %></td>
-        <td><%= link_to 'Destroy', [@organization, request], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
