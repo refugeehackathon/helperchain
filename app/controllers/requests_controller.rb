@@ -19,9 +19,12 @@ class RequestsController < ApplicationController
   # POST /requests
   def create
     @request = @organization.requests.new(request_params)
+    loc = Geokit::Geocoders::GoogleGeocoder.geocode "#{@request.town}, #{@request.street}"
+    @request.lat = loc.lat
+    @request.long = loc.lng
 
     if @request.save
-      redirect_to [@organization, @request], notice: 'Request was successfully created.'
+      redirect_to @request, notice: 'Request was successfully created.'
     else
       render :new
     end
@@ -30,7 +33,7 @@ class RequestsController < ApplicationController
   # PATCH/PUT /requests/1
   def update
     if @request.update(request_params)
-      redirect_to [@organization, @request], notice: 'Request was successfully updated.'
+      redirect_to @request, notice: 'Request was successfully updated.'
     else
       render :edit
     end
@@ -53,6 +56,6 @@ class RequestsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def request_params
-    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :organization_id)
+    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :organization_id, :town, :street, :address_information)
   end
 end
