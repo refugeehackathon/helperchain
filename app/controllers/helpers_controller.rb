@@ -10,7 +10,7 @@ class HelpersController < ApplicationController
     end
     @helper.confirmation_key = SecureRandom.urlsafe_base64
     if @helper.save
-      HelperMailer.optin_mail(@helper).deliver
+      HelperMailer.optin_mail(@helper).deliver_later
       redirect_to root_path, flash:{success: I18n.t("helpers.join_success")}
     else
       redirect_to root_path, flash:{danger: I18n.t("helpers.join_error")}
@@ -38,7 +38,7 @@ class HelpersController < ApplicationController
         @helper.delete
         redirect_to root_path, flash:{success: I18n.t("helpers.leave_success")}
       else
-        HelperMailer.optout_mail(@helper).deliver
+        HelperMailer.optout_mail(@helper).deliver_later
         redirect_to root_path, flash:{success: I18n.t("helpers.optout_sent")}
       end
     else

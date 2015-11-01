@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_organization
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_organization, except: [:accept, :decline]
+  before_action :set_request, only: [:show, :edit, :update, :destroy, :accept, :decline]
 
   # GET /requests/1
   def show
@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
-    @request = Request.new
+    @request = Request.new organization: current_orga_member.organization, member_in_charge: current_orga_member, timeout: 5
   end
 
   # GET /requests/1/edit
@@ -24,6 +24,7 @@ class RequestsController < ApplicationController
     @request.long = loc.lng
 
     if @request.save
+      RequestWorker.perform_async(@request.id)
       redirect_to @request, notice: 'Request was successfully created.'
     else
       render :new
@@ -45,17 +46,53 @@ class RequestsController < ApplicationController
     redirect_to requests_url, notice: 'Request was successfully destroyed.'
   end
 
+  def accept
+    if request_status_ok?
+      @request_status.accept
+      RequestWorker.perform_async(@request.id)
+    end
+  end
+
+  def decline
+    if request_status_ok?
+      @request_status.decline
+      RequestWorker.perform_async(@request.id)
+    end
+  end
+
   private
   def set_organization
     @organization = current_orga_member.organization
+    raise ActiveRecord::RecordNotFound if @organization.nil?
   end
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_request
-    @request = @organization.requests.find(params[:id])
+    id = params[:id] || params[:request_id]
+    if @organization
+      @request = @organization.requests.find(id)
+    else
+      @request = Request.find(id)
+    end
+    raise ActiveRecord::RecordNotFound if @request.nil?
+  end
+
+  def request_status_ok?
+    @request_status = @request.request_statuses.joins(:helper).where { helpers.email == my{params[:email]} }.first
+    raise ActiveRecord::RecordNotFound if @request_status.nil?
+    if @request_status.timeout?
+      render "timeout"
+      return false
+    end
+    unless @request_status.accepted.nil?
+      render "already_selected"
+      return false
+    end
+    @request = @request_status.request
+    return true
   end
 
   # Only allow a trusted parameter "white list" through.
   def request_params
-    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :organization_id, :town, :street, :address_information)
+    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :organization_id, :town, :street, :address_information, :member_in_charge_id)
   end
 end

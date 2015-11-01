@@ -4,11 +4,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <p><%= I18n.t "mail.greeting" %></p>
     <%= yield %>
 
+    <p>
+      <%= I18n.t "mail.farewell" %><br />
+      <%= I18n.t "mail.farewell_team" %>
+    </p>
+
+    <% unless @helper.nil? %>
     <p>
       <%= I18n.t "mail.unsubscribe_text"%><br />
       <%= link_to I18n.t("mail.optout_link"), helpers_unsubscribe_url(email: @helper.email, confirmation_key: @helper.confirmation_key) %>
     </p>
+    <% end %>
   </body>
 </html>

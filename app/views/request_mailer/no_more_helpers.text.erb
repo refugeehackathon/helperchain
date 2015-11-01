@@ -1,0 +1,5 @@
+<%= I18n.t "request_mailer.no_more_helpers.intro" %>
+
+<% @request.confirmed_helpers.each do |helper| %>
+* <%= helper.email %>
+<% end %>

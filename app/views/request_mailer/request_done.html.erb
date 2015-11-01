@@ -1,0 +1,5 @@
+<ul>
+  <% @request.confirmed_helpers.each do |helper| %>
+    <li><%= helper.email %></li>
+  <% end %>
+</ul>

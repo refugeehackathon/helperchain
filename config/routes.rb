@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   # Controllers
   resources :organizations
-  resources :requests
+  resources :requests do
+    get 'accept'
+    get 'decline'
+  end
   scope :helpers do
     get 'confirm/:confirmation_key' => 'helpers#confirm', as: :helpers_confirm
     get 'unsubscribe' => 'helpers#delete', as: :helpers_unsubscribe

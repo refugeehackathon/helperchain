@@ -1,0 +1,14 @@
+<h2><%= I18n.t "request.thanks_for_helping", organization: @request.organization.name %></h2>
+
+
+<h3><%= @request.name %></h3>
+
+<p><%= @request.description %></p>
+<p><%= @request.description_after_accept %></p>
+
+<h3><%= I18n.t "request.address" %></h3>
+
+<p>
+  <%= @request.street %><br />
+  <%= @request.town %><br />
+</p>

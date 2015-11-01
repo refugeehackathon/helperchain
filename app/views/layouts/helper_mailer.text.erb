@@ -1,5 +1,13 @@
+<%= I18n.t "mail.greeting" %>
+
 <%= yield %>
 
+<%= I18n.t "mail.farewell" %>
+<%= I18n.t "mail.farewell_team" %>
+
+
+<% unless @helper.nil? %>
 ---
 <%= I18n.t "helpers.unsubscribe_text"%>
 <%= helpers_unsubscribe_url(email: @helper.email, confirmation_key: @helper.confirmation_key) %>
+<% end %>

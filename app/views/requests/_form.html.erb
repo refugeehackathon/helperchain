@@ -13,6 +13,7 @@
 
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.input :description_after_accept %>
   <%= f.input :amount %>
   <%= f.input :town %>
   <%= f.input :street %>
@@ -20,6 +21,7 @@
 
   <%= f.input :start %>
   <%= f.input :end %>
+  <%= f.input :member_in_charge_id, as: :select, collection: @request.organization.orga_members, label_method: :email%>
   <%= f.input :timeout %>
 
   <div class="actions">

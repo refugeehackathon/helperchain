@@ -1,0 +1,7 @@
+<p><%= I18n.t "request_mailer.no_more_helpers.intro" %></p>
+
+<ul>
+  <% @request.confirmed_helpers.each do |helper| %>
+    <li><%= helper.email %></li>
+  <% end %>
+</ul>
