@@ -17,12 +17,14 @@ Rails.application.routes.draw do
   end
   resources :helpers
 
-  # Sidekiq
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  if ENV['ENABLE_ADMIN'] == "TRUE"
+    # Sidekiq
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/admin/sidekiq'
+    # Admin
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  end
 
-  # Admin
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :orga_members
 
   # Example of regular route:

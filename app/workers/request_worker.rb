@@ -5,12 +5,15 @@ class RequestWorker
     # Timeout helpers that need to be timeouted
     timeout_helpers
     if not need_more_helpers?
+      Rails.logger.info("Request done")
       RequestMailer.request_done(@request).deliver_later
     elsif next_batch_size > 0 # Do we need to send any mails right now?
       helpers = @request.next_helpers.limit next_batch_size
       if helpers.empty?
+      Rails.logger.info("Request no more helpers")
         RequestMailer.no_more_helpers(@request).deliver_later
       else
+        Rails.logger.info("Request sent")
         helpers.each {|h| send_helper_mail(h)}
         RequestWorker.perform_in(@request.timeout_time, @request.id)
       end

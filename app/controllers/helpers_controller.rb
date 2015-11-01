@@ -23,6 +23,7 @@ class HelpersController < ApplicationController
     unless @helper.nil?
       @helper.validated = true
       @helper.save
+      Rails.logger.info("Subscription")
       redirect_to root_path, flash:{success: I18n.t("helpers.confirmed")}
     else
       redirect_to root_path, flash:{danger: I18n.t("helpers.no_confirmation")}
@@ -35,6 +36,7 @@ class HelpersController < ApplicationController
     unless @helper.nil?
       confirmation_key = params[:confirmation_key]
       if confirmation_key == @helper.confirmation_key
+        Rails.logger.info("Unsubscription")
         @helper.delete
         redirect_to root_path, flash:{success: I18n.t("helpers.leave_success")}
       else

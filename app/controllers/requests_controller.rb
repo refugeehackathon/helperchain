@@ -24,6 +24,7 @@ class RequestsController < ApplicationController
     @request.long = loc.lng
 
     if @request.save
+      Rails.logger.info("Request created")
       RequestWorker.perform_async(@request.id)
       redirect_to @request, notice: 'Request was successfully created.'
     else
@@ -49,6 +50,7 @@ class RequestsController < ApplicationController
   def accept
     if request_status_ok?
       @request_status.accept
+      Rails.logger.info("Request accepted")
       RequestWorker.perform_async(@request.id)
     end
   end
@@ -56,6 +58,7 @@ class RequestsController < ApplicationController
   def decline
     if request_status_ok?
       @request_status.decline
+      Rails.logger.info("Request declined")
       RequestWorker.perform_async(@request.id)
     end
   end

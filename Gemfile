@@ -8,6 +8,9 @@ gem "pg"
 gem 'composite_primary_keys'
 gem "squeel"
 
+# Configuration
+gem "dotenv-rails"
+
 # Admin stuff
 gem "rails_admin"
 
@@ -33,6 +36,14 @@ end
 
 # Mail
 gem 'mailgun_rails'
+
+# Logging
+gem 'le'
+
+group :production do
+  gem 'rails_serve_static_assets'
+end
+
 
 group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views

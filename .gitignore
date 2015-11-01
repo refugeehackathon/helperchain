@@ -19,3 +19,5 @@
 *~
 *\#*
 db/schema.rb
+# Ignore application configuration
+.env*

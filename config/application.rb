@@ -23,5 +23,22 @@ module Helperchain
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :sidekiq
+
+
+    unless ENV["MAILGUN_API_KEY"].nil?
+      config.action_mailer.delivery_method = :mailgun
+      config.action_mailer.mailgun_settings = {
+        api_key: ENV["MAILGUN_API_KEY"],
+        domain: ENV["MAILGUN_DOMAIN"]
+      }
+    end
+
+
+    config.action_mailer.default_url_options = {
+      :host => ENV["HOST"]
+    }
+    unless ENV["LOGENTRIES_KEY"].nil?
+      Rails.logger = Le.new(ENV["LOGENTRIES_KEY"], :local => true, :ssl => true)
+    end
   end
 end
