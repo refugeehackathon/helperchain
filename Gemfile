@@ -17,12 +17,17 @@ gem "rails_admin"
 # GUI
 gem 'simple_form'
 
+# JS
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
 # Jobs
 gem 'sidekiq'
 gem 'sinatra', :require => nil
 
 # GIS
 gem 'geokit-rails'
+gem 'gmaps-autocomplete-rails'
 
 # auth stuff
 gem 'devise'
@@ -68,8 +73,6 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 

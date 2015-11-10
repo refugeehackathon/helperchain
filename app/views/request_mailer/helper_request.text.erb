@@ -1,6 +1,12 @@
 <%= I18n.t "request_mailer.helper_request.subject", organization: @request.organization.name %>
 
+## <%= @request.name %>
+
 <%= @request.description %>
+
+##<%= I18n.t "request.address" %>
+
+<%= @request.location %>
 
 <%= I18n.t "request_mailer.helper_request.answer_until", deadline: @request.next_deadline_from(@request_status.created_at) %>
 

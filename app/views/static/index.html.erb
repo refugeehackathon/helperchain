@@ -11,11 +11,13 @@
       <div class="col-md-3">
         <label class="input">
           <i class="icon-prepend fa fa-envelope"></i>
-          <%= f.text_field :email, required: true %>
+          <%= f.text_field :email, required: true, placeholder: I18n.t("email") %>
         </label>
         <label class="input">
           <i class="icon-prepend fa fa-location-arrow"></i>
-          <%= f.text_field :location, required: true %>
+          <%= f.text_field :location, required: true, placeholder: I18n.t("location") %>
+          <%= f.text_field :lat, required: true, hidden: true %>
+          <%= f.text_field :long, required: true, hidden: true %>
         </label>
         <button type="submit" class="btn-u btn-u-lg">
           <i class="fa fa-heart"></i> <%= I18n.t "join"%>
@@ -76,7 +78,7 @@
           <div class="col-md-3">
             <label class="input">
               <i class="icon-prepend fa fa-envelope"></i>
-              <%= f.text_field :email, required: true %>
+              <%= f.text_field :email, required: true, placeholder: I18n.t("email") %>
             </label>
 
             <button type="submit" class="btn-u btn-u-lg">
@@ -91,3 +93,21 @@
 
 </div><!--/container-->
 <!-- End Content Part -->
+<script type="text/javascript">
+ jQuery(function() {
+   var completer;
+
+   completer = new GmapsCompleter({
+     inputField: '#helper_location',
+     positionOutputter: function(latlng) {
+       $('#helper_lat').val(latlng.lat());
+       $('#helper_long').val(latlng.lng());
+     }
+   });
+
+   completer.autoCompleteInit({
+     country: "Germany",
+     region: "de"
+   });
+ });
+</script>

@@ -19,6 +19,7 @@ errors << "Please set the REDIS_URL environmnent Variable" if missing? "REDIS_UR
 
 warnings << "Consider using a Mail delivery service when deploying to production" if missing? "MAILGUN_API_KEY"
 warnings << "The admin interface is enabled!" if ENV['ENABLE_ADMIN'] == "TRUE"
+warnings << "Consider to set the SIDEKIQ_NAMESPACE!" if missing? "SIDEKIQ_NAMESPACE"
 
 # Print code
 

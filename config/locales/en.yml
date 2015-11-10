@@ -22,8 +22,8 @@
 en:
   hello: "Hello world"
   # misc
-  email: "e-mail"
-  location: "postcode or city"
+  email: "E-Mail"
+  location: "Town or zip code"
   # index
   join_h: "helperchain - The digital chain of help"
   join_p: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos."

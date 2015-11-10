@@ -3,7 +3,8 @@ class HelpersController < ApplicationController
   require 'securerandom'
   def create
     @helper = Helper.new params[:helper].permit(:email, :location, :lat, :long)
-    unless @helper.location.nil?
+    # Fallback if somehow the user did not managed to select a proper address
+    if @helper.lat.nil? || @helper.long.nil?
       loc = Geokit::Geocoders::GoogleGeocoder.geocode @helper.location
       @helper.lat = loc.lat
       @helper.long = loc.lng

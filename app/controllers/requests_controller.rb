@@ -19,10 +19,6 @@ class RequestsController < ApplicationController
   # POST /requests
   def create
     @request = @organization.requests.new(request_params)
-    loc = Geokit::Geocoders::GoogleGeocoder.geocode "#{@request.town}, #{@request.street}"
-    @request.lat = loc.lat
-    @request.long = loc.lng
-
     if @request.save
       Rails.logger.info("Request created")
       RequestWorker.perform_async(@request.id)
@@ -96,6 +92,6 @@ class RequestsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def request_params
-    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :organization_id, :town, :street, :address_information, :member_in_charge_id)
+    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :organization_id, :location, :address_information, :member_in_charge_id)
   end
 end

@@ -15,8 +15,9 @@
   <%= f.input :description %>
   <%= f.input :description_after_accept %>
   <%= f.input :amount %>
-  <%= f.input :town %>
-  <%= f.input :street %>
+  <%= f.input :location %>
+  <%= f.text_field :lat, required: true, hidden: true %>
+  <%= f.text_field :long, required: true, hidden: true %>
   <%= f.input :address_information%>
 
   <%= f.input :start %>
@@ -28,3 +29,22 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+ jQuery(function() {
+   var completer;
+
+   completer = new GmapsCompleter({
+     inputField: '#request_location',
+     positionOutputter: function(latlng) {
+       $('#request_lat').val(latlng.lat());
+       $('#request_long').val(latlng.lng());
+     }
+   });
+
+   completer.autoCompleteInit({
+     country: "Germany",
+     region: "de"
+   });
+ });
+</script>

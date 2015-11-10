@@ -5,7 +5,7 @@ class RequestStatus < ActiveRecord::Base
 
   def accept
     # Decrease helper score
-    helper.score = score / 0.5
+    helper.score = helper.score / 0.5
     helper.save
     # Update RequestState
     self.accepted = true
