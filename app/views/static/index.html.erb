@@ -1,32 +1,33 @@
 
 <!--=== Sign-In Block ===-->
-<%= simple_form_for @helper , defaults: { input_html: { class: 'sky-form' } } do |f| %>
 <div class="purchase">
   <div class="container">
     <div class="row">
+      <%= simple_form_for @helper,
+        defaults: { class: 'form-horizontal' } do |f| %>
       <div class="col-md-6">
         <span><%= I18n.t "join_h" %></span>
         <p><%= I18n.t "join_p" %></p>
       </div>
       <div class="col-md-3">
-        <label class="input">
-          <i class="icon-prepend fa fa-envelope"></i>
-          <%= f.text_field :email, required: true, placeholder: I18n.t("email") %>
-        </label>
-        <label class="input">
-          <i class="icon-prepend fa fa-location-arrow"></i>
-          <%= f.text_field :location, required: true, placeholder: I18n.t("location") %>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-prepend fa fa-envelope"></i></div>
+          <%= f.text_field :email, required: true, class: 'form-control', placeholder: I18n.t("email") %>
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-prepend fa fa-location-arrow"></i></div>
+          <%= f.text_field :location, required: true, class: 'form-control', placeholder: I18n.t("location") %>
           <%= f.text_field :lat, required: true, hidden: true %>
           <%= f.text_field :long, required: true, hidden: true %>
-        </label>
-        <button type="submit" class="btn-u btn-u-lg">
+        </div>
+        <button type="submit" class="btn-u">
           <i class="fa fa-heart"></i> <%= I18n.t "join"%>
         </button>
       </div>
+      <% end %>
     </div>
   </div>
 </div><!--/row-->
-<% end %>
 <!-- End Sign-In Block -->
 
 <!--=== Content Part ===-->
@@ -67,21 +68,20 @@
   <div class="purchase">
     <div class="container">
       <div class="row">
-        <%= simple_form_for @helper , defaults: { input_html: { class: 'sky-form' } },
+        <%= simple_form_for @helper,
+          class: 'form-horizontal',
           url: helpers_unsubscribe_path,
           method: :get do |f| %>
           <div class="col-md-6">
             <span><%= I18n.t "leave_h" %></span>
             <p><%= I18n.t "leave_p" %></p>
-
           </div>
           <div class="col-md-3">
-            <label class="input">
-              <i class="icon-prepend fa fa-envelope"></i>
-              <%= f.text_field :email, required: true, placeholder: I18n.t("email") %>
-            </label>
-
-            <button type="submit" class="btn-u btn-u-lg">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="icon-prepend fa fa-envelope"></i></div>
+              <%= f.text_field :email, required: true, class: 'form-control' %>
+            </div>
+            <button type="submit" class="btn-u">
               <i class="fa fa-heart"></i> <%= I18n.t("leave")%>
             </button>
           </div>
