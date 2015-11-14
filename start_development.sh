@@ -9,4 +9,4 @@ fi
 bundle
 bundle exec rake db:migrate
 bundle exec sidekiq&
-bundle exec rails server -p $PORT
+bundle exec rails server -p $PORT $ARGS

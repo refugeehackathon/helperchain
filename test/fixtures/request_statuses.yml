@@ -1,13 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  request_id: 
-  helper_id: 
+# Timeouted
+timeouted:
+  request: drk_req_with_helpers
+  helper: helper_one
+  accepted: null
+  timeout: true
+
+# Declined
+declined:
+  request: drk_req_with_helpers
+  helper: helper_two
   accepted: false
   timeout: false
 
-two:
-  request_id: 
-  helper_id: 
-  accepted: false
+# Pending
+pending:
+  request: drk_req_with_helpers
+  helper: helper_three
+  accepted: true
+  timeout: false
+
+# Accepted
+accepted:
+  request: drk_req_with_helpers
+  helper: helper_far_away
+  accepted: true
   timeout: false

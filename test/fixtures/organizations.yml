@@ -1,7 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+drk:
+  name: DRK
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+afeefa:
+  name: afeefa
