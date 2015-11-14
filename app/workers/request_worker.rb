@@ -9,8 +9,8 @@ class RequestWorker
       RequestMailer.request_done(@request).deliver_later
     elsif next_batch_size > 0 # Do we need to send any mails right now?
       helpers = @request.next_helpers.limit next_batch_size
-      if helpers.empty?
-      Rails.logger.info("Request no more helpers")
+      if helpers.empty? and @request.pending_helpers.empty?
+        Rails.logger.info("Request no more helpers")
         RequestMailer.no_more_helpers(@request).deliver_later
       else
         Rails.logger.info("Request sent")

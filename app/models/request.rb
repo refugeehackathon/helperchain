@@ -7,7 +7,7 @@ class Request < ActiveRecord::Base
   has_many :request_statuses
   has_and_belongs_to_many :helpers, join_table: :request_statuses
 
-  validates :member_in_charge_id, :organization_id, :name, :description, :lat, :long, :amount, :timeout, :location, presence: true
+  validates :member_in_charge_id, :organization_id, :name, :description, :lat, :long, :amount, :timeout, :location, :range, presence: true
   validates :lat, :long, :amount, :timeout, numericality: true
 
   def timeout_time
@@ -23,19 +23,14 @@ class Request < ActiveRecord::Base
   end
 
   def confirmed_helpers
-    return self.helpers.where {request_statuses.accepted == true}
+    self.helpers.where {request_statuses.accepted == true}
   end
 
   def pending_helpers
-    return self.helpers.where {(request_statuses.accepted == nil) & (request_statuses.timeout == false)}
+    self.helpers.where {(request_statuses.accepted == nil) & (request_statuses.timeout == false)}
   end
 
   def next_helpers
-    w_loc = 0.3
-    w_score = 0.7
-    origin = {lat: lat, lng: long}
-    helpers = Helper.where { (id << my{self.helpers}) & (validated == true) }
-              .order("#{w_loc} * #{Helper.distance_sql(self)} + " +
-                     "#{w_score} * score ASC")
+    Helper.within(range, origin: self).where { (id << my{self.helpers}) & (validated == true) }.order('random()')
   end
 end

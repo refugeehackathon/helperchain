@@ -99,6 +99,8 @@
 
    completer = new GmapsCompleter({
      inputField: '#helper_location',
+     country: "Germany",
+     region: "de",
      positionOutputter: function(latlng) {
        $('#helper_lat').val(latlng.lat());
        $('#helper_long').val(latlng.lng());
@@ -107,7 +109,7 @@
 
    completer.autoCompleteInit({
      country: "Germany",
-     region: "de"
+     region: "DE"
    });
  });
 </script>
