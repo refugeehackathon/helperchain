@@ -1,7 +1,7 @@
 /*Footer-v1
 ------------------------------------*/
 .footer-v1 .footer {
-	padding: 40px 0;	
+	padding: 40px 0;
 	background: #272727;
 }
 
@@ -32,7 +32,8 @@
 
 /*Dotted Map*/
 .footer-v1 .footer .map-img {
-	background: url(../../img/map-img.png) 5px 60px no-repeat;
+  background: url(../../img/map-img.png) 5px 60px no-repeat;
+  min-height: 200px;
 }
 
 /*Blog Posts (with images)*/

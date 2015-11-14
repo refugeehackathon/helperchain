@@ -12,6 +12,7 @@ if missing? "HOST"
 elsif Rails.env.production? and ENV["HOST"].starts_with? "localhost"
   warnings << "Your HOST should not be localhost but the host your users are seeing (e.g. example.com)"
 end
+errors << "Please set the CONTACT_EMAIL environmnent Variable" if missing? "CONTACT_EMAIL"
 errors << "Please set the DB_NAME environmnent Variable" if missing? "DB_NAME"
 errors << "Please set the REDIS_URL environmnent Variable" if missing? "REDIS_URL"
 

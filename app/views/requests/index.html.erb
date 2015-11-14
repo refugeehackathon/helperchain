@@ -1,13 +1,12 @@
 
-<%= link_to I18n.t("new_request"), new_request_path %>
+<%= link_to I18n.t("new_request"), new_request_path, class: "btn btn-u" %>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th>Lat</th>
-      <th>Long</th>
+      <th>Location</th>
       <th>Amount</th>
       <th>Start</th>
       <th>End</th>
@@ -23,17 +22,23 @@
       <tr>
         <td><%= request.name %></td>
         <td><%= request.description %></td>
-        <td><%= request.lat %></td>
-        <td><%= request.long %></td>
+        <td><%= request.location %></td>
         <td><%= request.amount %></td>
         <td><%= request.start %></td>
         <td><%= request.end %></td>
         <td><%= request.timeout %></td>
         <td><%= request.range %></td>
         <td><%= request.id %></td>
-        <td><%= link_to 'Show', request %></td>
-        <td><%= link_to 'Edit', edit_request_path(request) %></td>
-        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to fa_icon('eye', text: 'Show'), request,
+          class: "btn btn-info btn-xs" %></td>
+        <td><%= link_to fa_icon('pencil', text: 'Edit'), edit_request_path(request),
+          class: "btn btn-warning btn-xs" %></td>
+        <td>
+          <%= link_to fa_icon('trash-o', text: 'Delete'),
+          request,
+          method: :delete,
+          data: { confirm: 'Are you sure?' },
+          class: "btn btn-danger btn-xs"%></td>
       </tr>
     <% end %>
   </tbody>

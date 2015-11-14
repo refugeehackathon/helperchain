@@ -6,22 +6,22 @@
       <%= simple_form_for @helper,
         defaults: { class: 'form-horizontal' } do |f| %>
       <div class="col-md-6">
-        <span><%= I18n.t "join_h" %></span>
-        <p><%= I18n.t "join_p" %></p>
+        <span><%= I18n.t "home.join_h" %></span>
+        <p><%= I18n.t "home.join_p" %></p>
       </div>
       <div class="col-md-3">
-        <div class="input-group">
-          <div class="input-group-addon"><i class="icon-prepend fa fa-envelope"></i></div>
+        <div class="input-group"">
+          <div class="input-group-addon"><i class="icon-prepend fa fa-envelope input-button-home"></i></div>
           <%= f.text_field :email, required: true, class: 'form-control', placeholder: I18n.t("email") %>
         </div>
         <div class="input-group">
-          <div class="input-group-addon"><i class="icon-prepend fa fa-location-arrow"></i></div>
+          <div class="input-group-addon"><i class="icon-prepend fa fa-location-arrow input-button-home"></i></div>
           <%= f.text_field :location, required: true, class: 'form-control', placeholder: I18n.t("location") %>
           <%= f.text_field :lat, required: true, hidden: true %>
           <%= f.text_field :long, required: true, hidden: true %>
         </div>
         <button type="submit" class="btn-u">
-          <i class="fa fa-heart"></i> <%= I18n.t "join"%>
+          <i class="fa fa-heart"></i> <%= I18n.t "home.join_button"%>
         </button>
       </div>
       <% end %>
@@ -38,8 +38,8 @@
       <div class="service">
         <i class="fa fa-check-circle-o service-icon"></i>
         <div class="desc">
-          <h4><%= I18n.t "home_step1_h" %></h4>
-          <p><%= I18n.t "home_step1_p" %></p>
+          <h4><%= I18n.t "home.step1_h" %></h4>
+          <p><%= I18n.t "home.step1_p" %></p>
         </div>
       </div>
     </div>
@@ -47,8 +47,8 @@
       <div class="service">
         <i class="fa fa-envelope service-icon"></i>
         <div class="desc">
-          <h4><%= I18n.t "home_step2_h" %></h4>
-          <p><%= I18n.t "home_step2_p" %></p>
+          <h4><%= I18n.t "home.step2_h" %></h4>
+          <p><%= I18n.t "home.step2_p" %></p>
         </div>
       </div>
     </div>
@@ -56,8 +56,8 @@
       <div class="service">
         <i class="fa fa-heart service-icon"></i>
         <div class="desc">
-          <h4><%= I18n.t "home_step3_h" %></h4>
-          <p><%= I18n.t "home_step3_p" %></p>
+          <h4><%= I18n.t "home.step3_h" %></h4>
+          <p><%= I18n.t "home.step3_p" %></p>
         </div>
       </div>
     </div>
@@ -73,16 +73,16 @@
           url: helpers_unsubscribe_path,
           method: :get do |f| %>
           <div class="col-md-6">
-            <span><%= I18n.t "leave_h" %></span>
-            <p><%= I18n.t "leave_p" %></p>
+            <span><%= I18n.t "home.leave_h" %></span>
+            <p><%= I18n.t "home.leave_p" %></p>
           </div>
           <div class="col-md-3">
             <div class="input-group">
-              <div class="input-group-addon"><i class="icon-prepend fa fa-envelope"></i></div>
-              <%= f.text_field :email, required: true, class: 'form-control' %>
+              <div class="input-group-addon"><i class="icon-prepend fa fa-envelope input-button-home"></i></div>
+              <%= f.text_field :email, required: true, class: 'form-control', placeholder: I18n.t("email") %>
             </div>
             <button type="submit" class="btn-u">
-              <i class="fa fa-heart"></i> <%= I18n.t("leave")%>
+              <i class="fa fa-heart"></i> <%= I18n.t("home.leave")%>
             </button>
           </div>
         <% end %>

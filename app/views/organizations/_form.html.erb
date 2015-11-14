@@ -1,4 +1,9 @@
-<%= simple_form_for(@organization) do |f| %>
+<%= simple_form_for(@organization, class: "reg-page") do |f| %>
+
+  <div class="reg-header">
+    <h2><%= I18n.t 'orga.register_title' %></h2>
+    <p><%= raw I18n.t('orga.register_link', link: link_to(I18n.t("orga.login"), new_orga_member_session_path)) %></p>
+  </div>
   <% @orga_member.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
   <% end unless @orga_member.nil? or @orga_member.errors.empty?%>

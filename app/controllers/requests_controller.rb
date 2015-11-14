@@ -3,6 +3,10 @@ class RequestsController < ApplicationController
   before_action :set_organization, except: [:accept, :decline]
   before_action :set_request, only: [:show, :edit, :update, :destroy, :accept, :decline]
 
+  def index
+    @requests = @requests.order(created_at: :desc)
+  end
+
   # GET /requests/1
   def show
   end

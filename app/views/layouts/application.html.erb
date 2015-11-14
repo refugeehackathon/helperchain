@@ -5,9 +5,9 @@
   <head>
     <title><%=
            if @title
-             I18n.t "title", title: @title
+             I18n.t "layout.title", title: @title
            else
-             I18n.t "pure_title"
+             I18n.t "layout.pure_title"
              end
            %></title>
 
@@ -56,8 +56,8 @@
           <div class="topbar">
             <ul class="loginbar pull-right">
               <% unless current_orga_member.nil? %>
-                <li><%= I18n.t "hello_orga_member", email: current_orga_member.email %></li>
-                <li><%= link_to I18n.t("orga.logout"), destroy_orga_member_session_path, method: :delete %>
+                <li><%= I18n.t "orga.hello_member", email: current_orga_member.email %></li>
+                <li><%= link_to I18n.t("orga.logout"), destroy_orga_member_session_path, method: :delete %></li>
               <% else %>
                   <li><%= link_to I18n.t("orga.login"), new_orga_member_session_path %></li>
               <% end %>
@@ -100,7 +100,18 @@
       <% end %>
       <!-- End Notofication Block -->
 
-	  <%= yield %>
+      <% if @nocontainer %>
+        <%= yield%>
+      <% else %>
+        <div class="breadcrumbs">
+          <div class="container">
+            <h1 class="pull-left"><%= @page_title || "NO TITLE DEFINED"%></h1>
+          </div>
+        </div>
+        <div class="container content">
+	      <%= yield %>
+        </div>
+      <% end %>
 
       <!--=== Footer Version 1 ===-->
       <div class="footer-v1">
@@ -108,29 +119,54 @@
           <div class="container">
             <div class="row">
               <!-- About -->
-              <div class="col-md-6 md-margin-bottom-40">
+              <div class="col-md-4 md-margin-bottom-40">
                 <a href="/"><img id="logo-footer" class="footer-logo" src="/assets/img/logo2-default.png" alt=""></a>
-                <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
-                <p>Duis eleifend fermentum ante ut aliquam. Cras mi risus, dignissim sed adipiscing ut, placerat non arcu.</p>
-              </div><!--/col-md-3-->
+                <%= t("layout.footer.html")%>
+              </div><!--/col-md-4-->
               <!-- End About -->
 
-              <!-- Latest -->
-              <div class="col-md-6 md-margin-bottom-40">
+              <!-- Useful Links -->
+              <div class="col-md-4 md-margin-bottom-40">
                 <div class="posts">
-                  <div class="headline"><h2>Neuigkeiten</h2></div>
-                  <ul class="list-unstyled latest-list">
+                  <div class="headline"><h2><%= t "layout.useful_links"%></h2></div>
+                  <ul class="list-unstyled link-list">
+
+                    <% unless current_orga_member.nil? %>
+                      <li>
+                        <%= link_to I18n.t("orga.logout"), destroy_orga_member_session_path, method: :delete %>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                    <% else %>
+                      <li>
+                        <%= link_to I18n.t("orga.login"), new_orga_member_session_path %>
+                        <i class="fa fa-angle-right"></i>
+                      </li>
+                    <% end %>
                     <li>
-                      <a href="#">Start auf dem #refugeehackathon</a>
-                      <small>24.10.2015</small>
+                      <%= link_to I18n.t("nav.for_organizations"), new_organization_path %>
+                      <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
-                      <a href="#">Wie geht es weiter?</a>
-                      <small>2015</small>
+                      <%= link_to I18n.t("nav.faq"), faq_path %>
+                      <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                      <%= link_to(I18n.t("nav.imprint"), imprint_path) %>
+                      <i class="fa fa-angle-right"></i>
                     </li>
                   </ul>
                 </div>
-              </div><!--/col-md-3-->
+              </div>
+
+              <!-- Latest -->
+              <div class="col-md-4 md-margin-bottom-40 map-img">
+                <div class="posts">
+                  <div class="headline"><h2><%= t "layout.contact_us"%></h2></div>
+                  <address class="md-margin-bottom-40">
+                            <%= t 'layout.contact_mail' %>: <a href="mailto:<%= ENV['CONTACT_EMAIL'] %>" class=""><%= ENV['CONTACT_EMAIL'] %></a>
+                  </address>
+                </div>
+              </div><!--/col-md-4-->
               <!-- End Latest -->
 
             </div>

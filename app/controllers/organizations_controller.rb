@@ -6,6 +6,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   def index
     @organizations = Organization.all
+    @page_title = I18n.t "orga.all_title"
   end
 
   # GET /organizations/1
@@ -16,6 +17,7 @@ class OrganizationsController < ApplicationController
   def new
     @organization = Organization.new
     @orga_member = OrgaMember.new
+    @page_title = I18n.t "orga.new_title"
   end
 
   # GET /organizations/1/edit
