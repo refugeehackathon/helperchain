@@ -1,5 +1,7 @@
 # HelperChain
 
+[![Stories in Ready](https://badge.waffle.io/refugeehackathon/helperchain.svg?label=ready&title=Ready)](http://waffle.io/refugeehackathon/helperchain)
+
 Intelligent mailing list for organizing help
 
 https://github.com/refugeehackathon/helperchain
