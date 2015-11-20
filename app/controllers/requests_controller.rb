@@ -5,19 +5,27 @@ class RequestsController < ApplicationController
 
   def index
     @requests = @requests.order(created_at: :desc)
+    @title = I18n.t "request.manage_requests"
   end
 
   # GET /requests/1
   def show
+    @title = @request.name
   end
 
   # GET /requests/new
   def new
     @request = Request.new organization: current_orga_member.organization, member_in_charge: current_orga_member, timeout: 5
+    @request.end = Time.now.change({hour: 18, min: 0, sec: 0})
+    if @request.end < Time.now
+      @request.end += 1.day
+    end
+    @title = I18n.t "request.create"
   end
 
   # GET /requests/1/edit
   def edit
+    @title = @request.name
   end
 
   # POST /requests
@@ -25,9 +33,10 @@ class RequestsController < ApplicationController
     @request = @organization.requests.new(request_params)
     if @request.save
       Rails.logger.info("Request created")
-      RequestWorker.perform_async(@request.id)
-      redirect_to @request, notice: 'Request was successfully created.'
+      RequestWorker.perform_at(@request.start, @request.id)
+      redirect_to @request, notice: I18n.t("request.created_successfully")
     else
+      @title = I18n.t "request.create"
       render :new
     end
   end
@@ -35,19 +44,15 @@ class RequestsController < ApplicationController
   # PATCH/PUT /requests/1
   def update
     if @request.update(request_params)
-      redirect_to @request, notice: 'Request was successfully updated.'
+      redirect_to @request, notice: I18n.t("request.updated_successfully")
     else
+      @title = @request.name
       render :edit
     end
   end
 
-  # DELETE /requests/1
-  def destroy
-    @request.destroy
-    redirect_to requests_url, notice: 'Request was successfully destroyed.'
-  end
-
   def accept
+    @title = @request.name
     if request_status_ok?
       @request_status.accept
       Rails.logger.info("Request accepted")
@@ -56,6 +61,7 @@ class RequestsController < ApplicationController
   end
 
   def decline
+    @title = @request.name
     if request_status_ok?
       @request_status.decline
       Rails.logger.info("Request declined")

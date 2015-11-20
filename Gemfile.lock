@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.2.0)
     actionmailer (4.2.1)
       actionpack (= 4.2.1)
       actionview (= 4.2.1)
@@ -258,6 +259,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   cancancan
   coffee-rails (~> 4.1.0)
   composite_primary_keys
@@ -288,3 +290,6 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.6

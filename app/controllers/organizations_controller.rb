@@ -6,22 +6,24 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   def index
     @organizations = Organization.all
-    @page_title = I18n.t "orga.all_title"
+    @title = I18n.t "orga.all_title"
   end
 
   # GET /organizations/1
   def show
+    @title = I18n.t "orga.manage"
   end
 
   # GET /organizations/new
   def new
     @organization = Organization.new
     @orga_member = OrgaMember.new
-    @page_title = I18n.t "orga.new_title"
+    @title = I18n.t "orga.new_title"
   end
 
   # GET /organizations/1/edit
   def edit
+    @title = @organization.name
   end
 
   # POST /organizations
@@ -49,6 +51,7 @@ class OrganizationsController < ApplicationController
 
   # PATCH/PUT /organizations/1
   def update
+    @title = @organization.name
     if @organization.update(organization_params)
       redirect_to @organization, notice: 'Organization was successfully updated.'
     else

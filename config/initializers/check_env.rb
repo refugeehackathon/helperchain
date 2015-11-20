@@ -1,3 +1,4 @@
+# coding: utf-8
 errors = []
 warnings = []
 
@@ -21,6 +22,7 @@ errors << "Please set the REDIS_URL environmnent Variable" if missing? "REDIS_UR
 warnings << "Consider using a Mail delivery service when deploying to production" if missing? "MAILGUN_API_KEY"
 warnings << "The admin interface is enabled!" if ENV['ENABLE_ADMIN'] == "TRUE"
 warnings << "Consider to set the SIDEKIQ_NAMESPACE!" if missing? "SIDEKIQ_NAMESPACE"
+warnings << "Consider setting the TIMEZONE – Otherwise I will use #{Time.now.zone}" if missing? "TIMEZONE"
 
 # Print code
 
@@ -28,6 +30,10 @@ unless warnings.empty?
   print "\e[1;33m"
   warnings.each {|e| puts "* #{e}"}
   puts "\e[0m"
+end
+
+if Rails.env.production? and ENV["IGNORE_WARNINGS"] != "TRUE"
+  errors << "You are in production and there are some warnings to fix. If you want to ignore them, set IGNORE_WARNINGS to TRUE"
 end
 
 unless errors.empty?

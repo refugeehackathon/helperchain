@@ -2,12 +2,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :create, Organization
+    can :create, Organization if user.nil?
     can :index, Organization
-    can :show, Organization
 
-    unless user.nil?
+    if (not user.nil?) and user.organization.is_verified?
       can :create, Request
+      can :show, Organization
       can :manage, Organization, id: user.organization_id
       can :manage, Request, organization: user.organization
       can :edit, OrgaMember, id: user.id

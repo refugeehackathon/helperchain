@@ -1,5 +1,6 @@
 en:
   orga:
+    manage: "Manage organization"
     register_advantages: "Advantages"
     register_advantages_html: "<li>Foo</li>
       <li>Foo</li>
@@ -56,5 +57,9 @@ en:
     thanks_for_helping: "Thank you for helping %{organization}"
     thanks_for_not_helping: "Sorry that you can't help"
     thanks_for_not_helping_text: "Hopefully you will have time the next time"
+    created_successfully: 'Request was successfully created.'
+    updated_successfully: 'Request was successfully updated.'
+    manage_requests: "Manage Requests"
+    create: "Create request"
   faq:
     title: "FAQ"

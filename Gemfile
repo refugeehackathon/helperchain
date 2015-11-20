@@ -7,6 +7,7 @@ gem 'rails', '4.2.1'
 gem "pg"
 gem 'composite_primary_keys'
 gem "squeel"
+gem 'aasm'
 
 # Configuration
 gem "dotenv-rails"

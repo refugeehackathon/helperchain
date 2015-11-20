@@ -21,10 +21,13 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     <!-- Web Fonts -->
-    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+    <% unless ENV['OFFLINE'] %>
+      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false<%= "&key=#{ENV['GOOGLE_BROWSER_API_KEY']}" if ENV['GOOGLE_BROWSER_API_KEY'] %>"></script>
 
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false<%= "&key=#{ENV['GOOGLE_BROWSER_API_KEY']}" if ENV['GOOGLE_BROWSER_API_KEY'] %>"></script>
+      <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+    <% end %>
+
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
 
@@ -105,7 +108,7 @@
       <% else %>
         <div class="breadcrumbs">
           <div class="container">
-            <h1 class="pull-left"><%= @page_title || "NO TITLE DEFINED"%></h1>
+            <h1 class="pull-left"><%= @page_title || @title || "NO TITLE DEFINED"%></h1>
           </div>
         </div>
         <div class="container content">

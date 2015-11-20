@@ -23,6 +23,12 @@ module Helperchain
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :sidekiq
+    if ENV["TIMEZONE"]
+      config.time_zone = ENV["TIMEZONE"]
+    else
+      config.time_zone = Time.now.zone
+    end
+
 
 
     unless ENV["MAILGUN_API_KEY"].nil?

@@ -10,6 +10,14 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+    hints:
+      defaults:
+        description_after_accept: "This is shown to the helper after she accept the request"
+        amount: "How many helpers/fridges/etc… do you need?"
+        range: "What's the longest distance the helper should travel? (In km's)"
+        address_information: "Additional information for the address to help the helpers to find you"
+        start: "When to start searching for helpers (default now)"
+        end: "What is the latest time you need to know whether you have enough helpers?"
     # Labels and hints examples
     # labels:
     #   defaults:
@@ -23,4 +31,3 @@ en:
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
-

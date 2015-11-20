@@ -18,4 +18,8 @@ class Helper < ActiveRecord::Base
       field :created_at
     end
   end
+
+  def contact_address
+    email # || phone_number # For later
+  end
 end

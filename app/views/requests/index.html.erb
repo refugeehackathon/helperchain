@@ -5,14 +5,11 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
       <th>Location</th>
-      <th>Amount</th>
+      <th>State</th>
+      <th>Number of helpers</th>
       <th>Start</th>
       <th>End</th>
-      <th>Timeout</th>
-      <th>Range</th>
-      <th>Organization</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,24 +18,15 @@
     <% @organization.requests.each do |request| %>
       <tr>
         <td><%= request.name %></td>
-        <td><%= request.description %></td>
         <td><%= request.location %></td>
-        <td><%= request.amount %></td>
+        <td><%= request.state %></td>
+        <td><%= request.confirmed_helpers.count %> / <%= request.amount %></td>
         <td><%= request.start %></td>
         <td><%= request.end %></td>
-        <td><%= request.timeout %></td>
-        <td><%= request.range %></td>
-        <td><%= request.id %></td>
         <td><%= link_to fa_icon('eye', text: 'Show'), request,
           class: "btn btn-info btn-xs" %></td>
         <td><%= link_to fa_icon('pencil', text: 'Edit'), edit_request_path(request),
           class: "btn btn-warning btn-xs" %></td>
-        <td>
-          <%= link_to fa_icon('trash-o', text: 'Delete'),
-          request,
-          method: :delete,
-          data: { confirm: 'Are you sure?' },
-          class: "btn btn-danger btn-xs"%></td>
       </tr>
     <% end %>
   </tbody>
