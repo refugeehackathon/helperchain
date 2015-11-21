@@ -62,7 +62,7 @@
                 <li><%= I18n.t "orga.hello_member", email: current_orga_member.email %></li>
                 <li><%= link_to I18n.t("orga.logout"), destroy_orga_member_session_path, method: :delete %></li>
               <% else %>
-                  <li><%= link_to I18n.t("orga.login"), new_orga_member_session_path %></li>
+                <li><%= link_to I18n.t("orga.login"), new_orga_member_session_path %></li>
               <% end %>
             </ul>
           </div>
@@ -188,8 +188,7 @@
                   else
                     "2015 – #{date.year}"
                   end
-                  %> &copy; Helperchain.org
-				  <%= link_to(I18n.t("nav.imprint"), imprint_path) %>
+                  %> &copy; Helperchain.org | <%= link_to(I18n.t("nav.imprint"), imprint_path) %>
                 </p>
               </div>
 

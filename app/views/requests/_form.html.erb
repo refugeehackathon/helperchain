@@ -1,4 +1,7 @@
-<%= simple_form_for(@request) do |f| %>
+<%= simple_form_for @request, html: { class: 'sky-form' } do |f| %>
+<header>New request</header>
+<div class="row">
+
   <% if @request.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
@@ -11,6 +14,13 @@
     </div>
   <% end %>
 
+  <fieldset>
+    <section>
+        <label class="label">Text input</label>
+        <label class="input">
+            <input type="text">
+        </label>
+    </section>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :description_after_accept %>
@@ -25,10 +35,12 @@
   <%= f.input :end %>
   <%= f.input :member_in_charge_id, as: :select, collection: @request.organization.orga_members, label_method: :email%>
   <%= f.input :timeout %>
+  </fieldset>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <footer>
+      <%= f.submit %>
+  </footer>
+</div>
 <% end %>
 
 <script type="text/javascript">

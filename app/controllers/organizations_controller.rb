@@ -23,7 +23,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
-    @title = @organization.name
+    @title = I18n.t "orga.edit"
   end
 
   # POST /organizations

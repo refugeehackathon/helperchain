@@ -1,0 +1,29 @@
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'reg-page' }) do |f| %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+    <div class="reg-header">
+      <h2>Login to your account</h2>
+    </div>
+    <div class="input-group margin-bottom-20">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <%= f.text_field :email, required: true, class: 'form-control', placeholder: I18n.t("email"), autofocus: true %>
+    </div>
+    <div class="input-group margin-bottom-20">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <%= f.password_field :password, required: true, class: 'form-control', placeholder: I18n.t("password") %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 checkbox">
+        <!-- <label><input type="checkbox"> Stay signed in</label> -->
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
+      <div class="col-md-6">
+        <%= f.button :submit, "Login", class: 'btn-u pull-right' %>
+      </div>
+    </div>
+    <hr>
+    <%= render "devise/shared/links" %>
+  </div>
+</div><!--/row-->
+<% end %>
