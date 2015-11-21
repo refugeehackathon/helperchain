@@ -1,44 +1,24 @@
 <%= simple_form_for @request, html: { class: 'sky-form' } do |f| %>
-<header>New request</header>
 <div class="row">
-
-  <% if @request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
-
-      <ul>
-        <% @request.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <fieldset>
-    <section>
-        <label class="label">Text input</label>
-        <label class="input">
-            <input type="text">
-        </label>
-    </section>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :description_after_accept %>
-  <%= f.input :amount %>
-  <%= f.input :location %>
-  <%= f.input :range %>
-  <%= f.text_field :lat, required: true, hidden: true %>
-  <%= f.text_field :long, required: true, hidden: true %>
-  <%= f.input :address_information%>
+    <%= f.input :name, wrapper: :bootstrap %>
+    <%= f.input :description %>
+    <%= f.input :description_after_accept %>
+    <%= f.input :amount %>
+    <%= f.input :location %>
+    <%= f.input :range %>
+    <%= f.text_field :lat, required: true, hidden: true %>
+    <%= f.text_field :long, required: true, hidden: true %>
+    <%= f.input :address_information%>
 
-  <%= f.input :start %>
-  <%= f.input :end %>
-  <%= f.input :member_in_charge_id, as: :select, collection: @request.organization.orga_members, label_method: :email%>
-  <%= f.input :timeout %>
+    <%= f.input :start, as: :datetimepicker %>
+    <%= f.input :end, as: :datetimepicker %>
+    <%= f.input :member_in_charge_id, as: :select, collection: @request.organization.orga_members, label_method: :email%>
+    <%= f.input :timeout %>
   </fieldset>
 
   <footer>
-      <%= f.submit %>
+    <%= f.submit %>
   </footer>
 </div>
 <% end %>

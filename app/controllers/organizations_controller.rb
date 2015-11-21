@@ -28,6 +28,7 @@ class OrganizationsController < ApplicationController
 
   # POST /organizations
   def create
+    @title = I18n.t "orga.new_title"
     @organization = Organization.new(organization_params)
     @orga_member = OrgaMember.new params[:organization][:orga_member].permit(:email, :password, :password_confirmation)
     begin

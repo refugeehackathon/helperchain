@@ -10,16 +10,16 @@
         <p><%= I18n.t "home.join_p" %></p>
       </div>
       <div class="col-md-4">
-        <div class="input-group">
-          <div class="input-group-addon"><i class="icon-prepend fa fa-envelope input-button-home"></i></div>
-          <%= f.text_field :email, required: true, class: 'form-control', placeholder: I18n.t("email") %>
-        </div>
-        <div class="input-group margin-bottom-10">
-          <div class="input-group-addon"><i class="icon-prepend fa fa-location-arrow input-button-home"></i></div>
-          <%= f.text_field :location, required: true, class: 'form-control', placeholder: I18n.t("location") %>
-          <%= f.text_field :lat, required: true, hidden: true %>
-          <%= f.text_field :long, required: true, hidden: true %>
-        </div>
+        <%= f.input :email, wrapper: :no_label do %>
+          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+          <%= f.input_field :email, class: 'form-control' %>
+        <% end %>
+        <%= f.input :location, wrapper: :no_label do %>
+          <div class="input-group-addon"><i class="fa fa-location-arrow"></i></div>
+          <%= f.input_field :location, class: 'form-control' %>
+        <% end %>
+        <%= f.text_field :lat, required: true, hidden: true %>
+        <%= f.text_field :long, required: true, hidden: true %>
         <button type="submit" class="btn-u pull-right">
           <i class="fa fa-heart"></i> <%= I18n.t "home.join_button"%>
         </button>
@@ -78,19 +78,19 @@
           <p><%= I18n.t "home.leave_p" %></p>
         </div>
         <div class="col-md-4">
-          <div class="input-group margin-bottom-10">
-            <div class="input-group-addon"><i class="icon-prepend fa fa-envelope input-button-home"></i></div>
-            <%= f.text_field :email, required: true, class: 'form-control', placeholder: I18n.t("email") %>
-          </div>
+          <%= f.input :email, wrapper: :no_label do %>
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            <%= f.input_field :email, class: 'form-control' %>
+          <% end %>
           <button type="submit" class="btn-u pull-right">
             <i class="fa fa-heart"></i> <%= I18n.t("home.leave")%>
           </button>
         </div>
       <% end %>
     </div>
-  </div>
-</div><!--/row-->
-<!-- End Sign-Out Block -->
+  </div><!--/row-->
+  <!-- End Sign-Out Block -->
+</div>
 
 <!-- End Content Part -->
 <script type="text/javascript">

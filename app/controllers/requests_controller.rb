@@ -16,8 +16,9 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new organization: current_orga_member.organization, member_in_charge: current_orga_member, timeout: 5
-    @request.end = Time.now.change({hour: 18, min: 0, sec: 0})
-    if @request.end < Time.now
+    @request.start = Time.now
+    @request.end = @request.start.change({hour: 18, min: 0, sec: 0})
+    if @request.end < @request.start
       @request.end += 1.day
     end
     @title = I18n.t "request.create"

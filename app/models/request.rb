@@ -7,7 +7,6 @@ class Request < ActiveRecord::Base
   has_many :request_statuses
   has_and_belongs_to_many :helpers, join_table: :request_statuses
 
-  validates :member_in_charge_id, :organization_id, :name, :description, :lat, :long, :amount, :timeout, :location, :range, presence: true
   validates :lat, :long, :amount, :timeout, numericality: true
 
   def timeout_time

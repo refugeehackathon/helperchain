@@ -8,6 +8,8 @@ gem "pg"
 gem 'composite_primary_keys'
 gem "squeel"
 gem 'aasm'
+# Automatically creates validations basing on the database schema.
+gem "schema_validations"
 
 # Configuration
 gem "dotenv-rails"

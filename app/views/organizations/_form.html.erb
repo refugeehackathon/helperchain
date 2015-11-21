@@ -9,39 +9,32 @@
 <%= f.error_notification %>
 
 <div class="row">
-  <!-- <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3"> -->
-    <div class="reg-header">
-      <h2><%= I18n.t 'orga.register_title' %></h2>
-    </div>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-user"></i></span>
-      <%= f.text_field :name, required: true, class: 'form-control', placeholder: I18n.t("name") %>
-    </div>
-    <%= f.simple_fields_for @orga_member do |b| %>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-      <%= b.text_field :email, required: true, as: :email, class: 'form-control', placeholder: I18n.t("email") %>
-    </div>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-key"></i></span>
-      <%= b.password_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), class: 'form-control', placeholder: I18n.t("password") %>
-    </div>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-key"></i></span>
-      <%= b.password_field :password_confirmation, required: true, class: 'form-control', placeholder: I18n.t("passwordconfirmation") %>
-    </div>
-    <% end unless @orga_member.nil? %>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.button :submit, class: 'btn-u pull-right' %>
-      </div>
-    </div>
-  <!-- </div> -->
-</div><!--/row-->
-
-
-<!--  <div class="reg-header">
+  <div class="reg-header">
     <h2><%= I18n.t 'orga.register_title' %></h2>
-    <p><%= raw I18n.t('orga.register_link', link: link_to(I18n.t("orga.login"), new_orga_member_session_path)) %></p>
-  </div> -->
+  </div>
+  <%= f.input :name, wrapper: :no_label do %>
+    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+    <%= f.input_field :name, class: 'form-control', placeholder: I18n.t("orga.name") %>
+  <% end %>
+  <%= f.simple_fields_for @orga_member do |b| %>
+
+    <%= b.input :email, wrapper: :no_label do %>
+      <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+      <%= b.input_field :email, class: 'form-control' %>
+    <% end %>
+    <%= b.input :password, wrapper: :no_label do %>
+      <span class="input-group-addon"><i class="fa fa-key"></i></span>
+      <%= b.input_field :password, class: 'form-control' %>
+    <% end %>
+    <%= b.input :password_confirmation, wrapper: :no_label do %>
+      <span class="input-group-addon"><i class="fa fa-key"></i></span>
+      <%= b.input_field :password_confirmation, class: 'form-control' %>
+    <% end %>
+  <% end unless @orga_member.nil? %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.button :submit, class: 'btn-u pull-right' %>
+    </div>
+  </div>
+</div><!--/row-->
 <% end %>

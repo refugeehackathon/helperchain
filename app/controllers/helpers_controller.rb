@@ -14,7 +14,8 @@ class HelpersController < ApplicationController
       HelperMailer.optin_mail(@helper).deliver_later
       redirect_to root_path, flash:{success: I18n.t("helpers.join_success")}
     else
-      redirect_to root_path, flash:{danger: I18n.t("helpers.join_error")}
+      @nocontainer = true
+      render "static/index"
     end
   end
 
