@@ -15,6 +15,6 @@ class RequestMailer < ApplicationMailer
     @request_status = request_status
     @request = request_status.request
     @helper = @request_status.helper
-    mail to: @helper.email, subject: I18n.t("request_mailer.helper_request.subject", organization: @request.organization.name)
+    mail to: @helper.email, subject: I18n.t("request_mailer.helper_request.subject", project: @request.project.name)
   end
 end

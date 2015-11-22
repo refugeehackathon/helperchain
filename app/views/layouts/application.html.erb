@@ -58,11 +58,11 @@
           <!-- Topbar -->
           <div class="topbar">
             <ul class="loginbar pull-right">
-              <% unless current_orga_member.nil? %>
-                <li><%= I18n.t "orga.hello_member", email: current_orga_member.email %></li>
-                <li><%= link_to I18n.t("orga.logout"), destroy_orga_member_session_path, method: :delete %></li>
+              <% unless current_manager.nil? %>
+                <li><%= I18n.t "orga.hello_member", email: current_manager.email %></li>
+                <li><%= link_to I18n.t("orga.logout"), destroy_manager_session_path, method: :delete %></li>
               <% else %>
-                <li><%= link_to I18n.t("orga.login"), new_orga_member_session_path %></li>
+                <li><%= link_to I18n.t("orga.login"), new_manager_session_path %></li>
               <% end %>
             </ul>
           </div>
@@ -80,12 +80,12 @@
         <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
           <div class="container">
             <ul class="nav navbar-nav">
-              <% unless current_orga_member.nil? %>
-                <%= active_li_link_to I18n.t("nav.manage_organization"), organization_path(current_orga_member.organization), class: "foo" %>
+              <% unless current_manager.nil? %>
+                <%= active_li_link_to I18n.t("nav.manage_project"), project_path(current_manager.project), class: "foo" %>
                 <%= active_li_link_to I18n.t("nav.manage_requests"), requests_path %>
               <% else %>
                 <!-- Home -->
-                <%= active_li_link_to I18n.t("nav.for_organizations"), new_organization_path %>
+                <%= active_li_link_to I18n.t("nav.for_projects"), new_project_path %>
               <% end %>
               <%= active_li_link_to I18n.t("nav.faq"), faq_path %>
             </ul>
@@ -133,19 +133,19 @@
                   <div class="headline"><h2><%= t "layout.useful_links"%></h2></div>
                   <ul class="list-unstyled link-list">
 
-                    <% unless current_orga_member.nil? %>
+                    <% unless current_manager.nil? %>
                       <li>
-                        <%= link_to I18n.t("orga.logout"), destroy_orga_member_session_path, method: :delete %>
+                        <%= link_to I18n.t("orga.logout"), destroy_manager_session_path, method: :delete %>
                         <i class="fa fa-angle-right"></i>
                       </li>
                     <% else %>
                       <li>
-                        <%= link_to I18n.t("orga.login"), new_orga_member_session_path %>
+                        <%= link_to I18n.t("orga.login"), new_manager_session_path %>
                         <i class="fa fa-angle-right"></i>
                       </li>
                     <% end %>
                     <li>
-                      <%= link_to I18n.t("nav.for_organizations"), new_organization_path %>
+                      <%= link_to I18n.t("nav.for_projects"), new_project_path %>
                       <i class="fa fa-angle-right"></i>
                     </li>
                     <li>

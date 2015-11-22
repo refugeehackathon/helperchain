@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'imprint' => 'static#contactimprint'
 
   # Controllers
-  resources :organizations
+  resources :projects
   resources :requests do
     get 'accept'
     get 'decline'
@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
 
-  devise_for :orga_members, controllers: {
-                 sessions: 'orga_members/sessions'
+  devise_for :managers, controllers: {
+                 sessions: 'managers/sessions'
                }
 
   # Example of regular route:

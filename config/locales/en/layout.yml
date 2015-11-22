@@ -2,16 +2,16 @@ en:
   nav:
     toggle_navigation: Toggle navigation
     faq: "FAQ"
-    for_organizations: "For organizations"
+    for_projects: "For projects"
     imprint: "Imprint"
     manage_requests: "Manage requests"
-    manage_organization: "Manage organization"
-    organization_list: "Organizations"
+    manage_project: "Manage project"
+    project_list: "Projects"
   orga:
     hello_member: "Hi %{email}"
-    login: "Organization Login"
+    login: "Project Login"
     logout: "Logout"
-    register: "Organization Registration"
+    register: "Project Registration"
   layout:
     pure_title: "Helperchain – The digital chain of help"
     title: "Helperchain – %{title}"

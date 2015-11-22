@@ -2,15 +2,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :create, Organization if user.nil?
-    can :index, Organization
+    can :create, Project if user.nil?
+    can :index, Project
 
-    if (not user.nil?) and user.organization.is_verified?
+    if (not user.nil?) and user.project.is_verified?
       can :create, Request
-      can :show, Organization
-      can :manage, Organization, id: user.organization_id
-      can :manage, Request, organization: user.organization
-      can :edit, OrgaMember, id: user.id
+      can :show, Project
+      can :manage, Project, id: user.project_id
+      can :manage, Request, project: user.project
+      can :edit, Manager, id: user.id
     end
     # Define abilities for the passed in user here. For example:
     #

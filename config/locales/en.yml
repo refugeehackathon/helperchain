@@ -1,6 +1,6 @@
 en:
   orga:
-    manage: "Manage organization"
+    manage: "Manage project"
     register_advantages: "Advantages"
     register_advantages_html: "<li>Foo</li>
       <li>Foo</li>
@@ -8,8 +8,8 @@ en:
       <li>Foo</li>"
     register_title: "Register a new account"
     register_link: Already Signed Up? Click %{link} to login your account.
-    all_title: "Organizations"
-    new_title: "Register Organization"
+    all_title: "Projects"
+    new_title: "Register Project"
   new_request: "New request"
   # misc
   email: "E-Mail"
@@ -48,13 +48,13 @@ en:
       subject: "Enough helpers accepted your request!"
       intro: "We have found the helpers you asked for:"
     helper_request:
-      subject: "%{organization} is asking for help"
+      subject: "%{project} is asking for help"
       answer_until: "Please decide until %{deadline} if you can help."
       accept: "Click here if you can help"
       decline: "Click here if you can't help"
   request:
     address: "Address"
-    thanks_for_helping: "Thank you for helping %{organization}"
+    thanks_for_helping: "Thank you for helping %{project}"
     thanks_for_not_helping: "Sorry that you can't help"
     thanks_for_not_helping_text: "Hopefully you will have time the next time"
     created_successfully: 'Request was successfully created.'

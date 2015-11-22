@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_organization, except: [:accept, :decline]
+  before_action :set_project, except: [:accept, :decline]
   before_action :set_request, only: [:show, :edit, :update, :destroy, :accept, :decline]
 
   def index
@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
-    @request = Request.new organization: current_orga_member.organization, member_in_charge: current_orga_member, timeout: 5
+    @request = Request.new project: current_manager.project, member_in_charge: current_manager, timeout: 5
     @request.start = Time.now
     @request.end = @request.start.change({hour: 18, min: 0, sec: 0})
     if @request.end < @request.start
@@ -31,7 +31,7 @@ class RequestsController < ApplicationController
 
   # POST /requests
   def create
-    @request = @organization.requests.new(request_params)
+    @request = @project.requests.new(request_params)
     if @request.save
       Rails.logger.info("Request created")
       RequestWorker.perform_at(@request.start, @request.id)
@@ -71,15 +71,15 @@ class RequestsController < ApplicationController
   end
 
   private
-  def set_organization
-    @organization = current_orga_member.organization
-    raise ActiveRecord::RecordNotFound if @organization.nil?
+  def set_project
+    @project = current_manager.project
+    raise ActiveRecord::RecordNotFound if @project.nil?
   end
 
   def set_request
     id = params[:id] || params[:request_id]
-    if @organization
-      @request = @organization.requests.find(id)
+    if @project
+      @request = @project.requests.find(id)
     else
       @request = Request.find(id)
     end
@@ -103,6 +103,6 @@ class RequestsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def request_params
-    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :organization_id, :location, :address_information, :member_in_charge_id)
+    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :project_id, :location, :address_information, :member_in_charge_id)
   end
 end

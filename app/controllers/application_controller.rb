@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   include CanCan::ControllerAdditions
   def current_ability
-  @current_ability ||= Ability.new(current_orga_member)
+  @current_ability ||= Ability.new(current_manager)
 end
 end

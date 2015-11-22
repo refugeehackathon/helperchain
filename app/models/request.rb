@@ -2,8 +2,8 @@ class Request < ActiveRecord::Base
   acts_as_mappable :default_units => :kms,
                    :lat_column_name => :lat,
                    :lng_column_name => :long
-  belongs_to :organization
-  belongs_to :member_in_charge, foreign_key: :member_in_charge_id, class_name: :OrgaMember
+  belongs_to :project
+  belongs_to :member_in_charge, foreign_key: :member_in_charge_id, class_name: :Manager
   has_many :request_statuses
   has_and_belongs_to_many :helpers, join_table: :request_statuses
 

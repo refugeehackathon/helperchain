@@ -1,9 +1,9 @@
-<%= simple_form_for(@organization, html: {class: "reg-page"}) do |f| %>
+<%= simple_form_for(@project, html: {class: "reg-page"}) do |f| %>
 
-<% @orga_member.errors.full_messages.each do |msg| %>
+<% @manager.errors.full_messages.each do |msg| %>
   <p><%= msg %></p>
-<% end unless @orga_member.nil? or @orga_member.errors.empty?%>
-<% @organization.errors.full_messages.each do |msg| %>
+<% end unless @manager.nil? or @manager.errors.empty?%>
+<% @project.errors.full_messages.each do |msg| %>
   <p><%= msg %></p>
 <% end%>
 <%= f.error_notification %>
@@ -16,7 +16,7 @@
     <span class="input-group-addon"><i class="fa fa-user"></i></span>
     <%= f.input_field :name, class: 'form-control', placeholder: I18n.t("orga.name") %>
   <% end %>
-  <%= f.simple_fields_for @orga_member do |b| %>
+  <%= f.simple_fields_for @manager do |b| %>
 
     <%= b.input :email, wrapper: :no_label do %>
       <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -30,10 +30,10 @@
       <span class="input-group-addon"><i class="fa fa-key"></i></span>
       <%= b.input_field :password_confirmation, class: 'form-control' %>
     <% end %>
-  <% end unless @orga_member.nil? %>
+  <% end unless @manager.nil? %>
   <div class="row">
     <div class="col-md-12">
-      <%= link_to I18n.t("orga.have_already_account"), new_orga_member_session_path %>
+      <%= link_to I18n.t("orga.have_already_account"), new_manager_session_path %>
       <%= f.button :submit, class: 'btn-u pull-right' %>
     </div>
   </div>

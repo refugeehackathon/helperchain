@@ -1,7 +1,7 @@
 class RequestStatus < ActiveRecord::Base
   belongs_to :request
   belongs_to :helper
-  has_one :organization, through: :request
+  has_one :project, through: :request
 
   def accept
     # Decrease helper score
