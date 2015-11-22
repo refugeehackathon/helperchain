@@ -2,13 +2,13 @@ class Managers::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    @title = I18n.t "orga.login"
+    @title = I18n.t "project.login"
     super
   end
 
   # POST /resource/sign_in
   def create
-    @title = I18n.t "orga.login"
+    @title = I18n.t "project.login"
     super
   end
 

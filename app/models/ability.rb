@@ -4,10 +4,15 @@ class Ability
   def initialize(user)
     can :create, Project if user.nil?
     can :index, Project
+    can :charities, Project
+    can :create, Helper
+    can :delete, Helper
+    can :unsubscribe, Helper
+    can :confirm, Helper
 
-    if (not user.nil?) and user.project.is_verified?
+    if not user.nil?
       can :create, Request
-      can :show, Project
+      can :show, Project, id: user.project_id
       can :manage, Project, id: user.project_id
       can :manage, Request, project: user.project
       can :edit, Manager, id: user.id

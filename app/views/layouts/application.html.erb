@@ -22,8 +22,6 @@
 
     <!-- Web Fonts -->
     <% unless ENV['OFFLINE'] %>
-      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false<%= "&key=#{ENV['GOOGLE_BROWSER_API_KEY']}" if ENV['GOOGLE_BROWSER_API_KEY'] %>"></script>
-
       <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
     <% end %>
 
@@ -59,10 +57,10 @@
           <div class="topbar">
             <ul class="loginbar pull-right">
               <% unless current_manager.nil? %>
-                <li><%= I18n.t "orga.hello_member", email: current_manager.email %></li>
-                <li><%= link_to I18n.t("orga.logout"), destroy_manager_session_path, method: :delete %></li>
+                <li><%= I18n.t "project.hello_member", email: current_manager.email %></li>
+                <li><%= link_to I18n.t("project.logout"), destroy_manager_session_path, method: :delete %></li>
               <% else %>
-                <li><%= link_to I18n.t("orga.login"), new_manager_session_path %></li>
+                <li><%= link_to I18n.t("project.login"), new_manager_session_path %></li>
               <% end %>
             </ul>
           </div>
@@ -82,10 +80,11 @@
             <ul class="nav navbar-nav">
               <% unless current_manager.nil? %>
                 <%= active_li_link_to I18n.t("nav.manage_project"), project_path(current_manager.project), class: "foo" %>
-                <%= active_li_link_to I18n.t("nav.manage_requests"), requests_path %>
+                <%= active_li_link_to I18n.t("nav.manage_requests"), project_requests_path(current_manager.project) %>
               <% else %>
                 <!-- Home -->
-                <%= active_li_link_to I18n.t("nav.for_projects"), new_project_path %>
+                <%= active_li_link_to I18n.t("nav.how_it_works"), "#" %>
+                <%= active_li_link_to I18n.t("nav.charities"), projects_charities_path %>
               <% end %>
               <%= active_li_link_to I18n.t("nav.faq"), faq_path %>
             </ul>
@@ -135,12 +134,12 @@
 
                     <% unless current_manager.nil? %>
                       <li>
-                        <%= link_to I18n.t("orga.logout"), destroy_manager_session_path, method: :delete %>
+                        <%= link_to I18n.t("project.logout"), destroy_manager_session_path, method: :delete %>
                         <i class="fa fa-angle-right"></i>
                       </li>
                     <% else %>
                       <li>
-                        <%= link_to I18n.t("orga.login"), new_manager_session_path %>
+                        <%= link_to I18n.t("project.login"), new_manager_session_path %>
                         <i class="fa fa-angle-right"></i>
                       </li>
                     <% end %>

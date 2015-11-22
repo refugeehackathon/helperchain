@@ -1,5 +1,8 @@
 en:
-  orga:
+  project:
+    subscribe: "Subscribe"
+    subscribe_to: "Subscribe to %{project}"
+    is_charity?: "This is a charity project"
     name: "Project Name"
     manage: "Manage project"
     register_advantages: "Advantages"
@@ -12,3 +15,4 @@ en:
     all_title: "Projects"
     new_title: "Register Project"
     have_already_account: I have already an account
+    join_button: "Join %{project}!"

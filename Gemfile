@@ -11,6 +11,9 @@ gem 'aasm'
 # Automatically creates validations basing on the database schema.
 gem "schema_validations"
 
+# misc
+gem 'friendly_id'
+
 # Configuration
 gem "dotenv-rails"
 
@@ -29,10 +32,6 @@ gem 'jquery-ui-rails'
 # Jobs
 gem 'sidekiq'
 gem 'sinatra', :require => nil
-
-# GIS
-gem 'geokit-rails'
-gem 'gmaps-autocomplete-rails'
 
 # auth stuff
 gem 'devise'

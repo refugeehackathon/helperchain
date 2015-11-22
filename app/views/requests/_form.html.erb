@@ -1,19 +1,14 @@
-<%= simple_form_for @request, html: { class: 'sky-form' } do |f| %>
+<%= simple_form_for [@project,@request], html: { class: 'sky-form' } do |f| %>
 <div class="row">
   <fieldset>
     <%= f.input :name, wrapper: :bootstrap %>
     <%= f.input :description %>
     <%= f.input :description_after_accept %>
     <%= f.input :amount %>
-    <%= f.input :location %>
-    <%= f.input :range %>
-    <%= f.text_field :lat, required: true, hidden: true %>
-    <%= f.text_field :long, required: true, hidden: true %>
-    <%= f.input :address_information%>
 
     <%= f.input :start, as: :datetimepicker %>
     <%= f.input :end, as: :datetimepicker %>
-    <%= f.input :member_in_charge_id, as: :select, collection: @request.project.managers, label_method: :email%>
+    <%= f.input :manager_in_charge_id, as: :select, collection: @project.managers, label_method: :email%>
     <%= f.input :timeout %>
   </fieldset>
 
@@ -22,22 +17,3 @@
   </footer>
 </div>
 <% end %>
-
-<script type="text/javascript">
- jQuery(function() {
-   var completer;
-
-   completer = new GmapsCompleter({
-     inputField: '#request_location',
-     positionOutputter: function(latlng) {
-       $('#request_lat').val(latlng.lat());
-       $('#request_long').val(latlng.lng());
-     }
-   });
-
-   completer.autoCompleteInit({
-     country: "Germany",
-     region: "de"
-   });
- });
-</script>

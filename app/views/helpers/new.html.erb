@@ -1,0 +1,17 @@
+<div class="row">
+<%= simple_form_for [@project, @helper],
+  html: { class: 'sky-form' } do |f| %>
+  <div class="col-md-4">
+    <%= f.input :email, wrapper: :no_label do %>
+      <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+      <%= f.input_field :email, class: 'form-control' %>
+    <% end %>
+    <button type="submit" class="btn-u pull-right">
+      <i class="fa fa-heart"></i> <%= I18n.t "project.subscribe_to", project: @project.name%>
+    </button>
+  </div>
+  <div class="col-md-8">
+    <p><%= @project.description %></p>
+  </div>
+<% end %>
+</div>

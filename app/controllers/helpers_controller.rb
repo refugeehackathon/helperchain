@@ -1,27 +1,29 @@
 class HelpersController < ApplicationController
-  require 'geokit'
+  authorize_resource
   require 'securerandom'
+
+  def new
+    @project = Project.friendly.find params[:project_id]
+    @helper = Helper.new
+    @title = I18n.t("project.subscribe_to", project: @project.name)
+  end
+
   def create
-    @helper = Helper.new params[:helper].permit(:email, :location, :lat, :long)
-    # Fallback if somehow the user did not managed to select a proper address
-    if @helper.lat.nil? || @helper.long.nil?
-      loc = Geokit::Geocoders::GoogleGeocoder.geocode @helper.location
-      @helper.lat = loc.lat
-      @helper.long = loc.lng
-    end
+    @project = Project.friendly.find params[:project_id]
+    @helper = Helper.new params[:helper].permit(:email)
+    @helper.project = @project
     @helper.confirmation_key = SecureRandom.urlsafe_base64
     if @helper.save
       HelperMailer.optin_mail(@helper).deliver_later
       redirect_to root_path, flash:{success: I18n.t("helpers.join_success")}
     else
-      @nocontainer = true
-      render "static/index"
+      @title = I18n.t("project.subscribe_to", project: @project.name)
+      render "new"
     end
   end
 
   def confirm
     @helper = Helper.find_by_confirmation_key params[:confirmation_key]
-
     unless @helper.nil?
       @helper.validated = true
       @helper.save

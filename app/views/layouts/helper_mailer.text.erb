@@ -9,5 +9,5 @@
 <% unless @helper.nil? %>
 ---
 <%= I18n.t "helpers.unsubscribe_text"%>
-<%= helpers_unsubscribe_url(email: @helper.email, confirmation_key: @helper.confirmation_key) %>
+<%= project_helpers_unsubscribe_url(project_id: @helper.project, email: @helper.email, confirmation_key: @helper.confirmation_key) %>
 <% end %>

@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Location</th>
       <th>State</th>
       <th>Number of helpers</th>
       <th>Start</th>
@@ -15,18 +14,17 @@
     <% @project.requests.each do |request| %>
       <tr>
         <td><%= request.name %></td>
-        <td><%= request.location %></td>
         <td><%= request.state %></td>
         <td><%= request.confirmed_helpers.count %> / <%= request.amount %></td>
         <td><%= request.start %></td>
         <td><%= request.end %></td>
-        <td><%= link_to fa_icon('eye', text: 'Show'), request,
+        <td><%= link_to fa_icon('eye', text: 'Show'), project_request_path(@project, request),
           class: "btn btn-info btn-xs" %></td>
-        <td><%= link_to fa_icon('pencil', text: 'Edit'), edit_request_path(request),
+        <td><%= link_to fa_icon('pencil', text: 'Edit'), edit_project_request_path(@project, request),
           class: "btn btn-warning btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to I18n.t("request.create"), new_request_path, class: "btn btn-u pull-right" %>
+<%= link_to I18n.t("request.create"), new_project_request_path(@project), class: "btn btn-u pull-right" %>

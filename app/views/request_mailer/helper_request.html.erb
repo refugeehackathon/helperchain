@@ -4,12 +4,8 @@
 
 <p><%= @request.description %></p>
 
-<h3><%= I18n.t "request.address" %></h3>
-
-<p><%= @request.location %></p>
-
 <p><%= I18n.t "request_mailer.helper_request.answer_until", deadline: @request.next_deadline_from(@request_status.created_at) %></p>
 
-<%= link_to I18n.t("request_mailer.helper_request.accept"), request_accept_url(@request, email: @helper.email)%>
+<%= link_to I18n.t("request_mailer.helper_request.accept"), project_request_accept_url(@request.project, @request, email: @helper.email)%>
 
-<%= link_to I18n.t("request_mailer.helper_request.decline"), request_decline_url(@request, email: @helper.email) %>
+<%= link_to I18n.t("request_mailer.helper_request.decline"), project_request_decline_url(@request.project, @request, email: @helper.email) %>

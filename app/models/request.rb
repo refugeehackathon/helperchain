@@ -1,13 +1,20 @@
 class Request < ActiveRecord::Base
-  acts_as_mappable :default_units => :kms,
-                   :lat_column_name => :lat,
-                   :lng_column_name => :long
   belongs_to :project
-  belongs_to :member_in_charge, foreign_key: :member_in_charge_id, class_name: :Manager
+  belongs_to :manager_in_charge, foreign_key: :manager_in_charge_id, class_name: :Manager
   has_many :request_statuses
   has_and_belongs_to_many :helpers, join_table: :request_statuses
 
-  validates :lat, :long, :amount, :timeout, numericality: true
+  rails_admin do
+    list do
+      field :project
+      field :name
+      field :state
+      field :description
+      field :amount
+      field :end
+      field :manager_in_charge
+    end
+  end
 
   def timeout_time
     timeout.minutes
@@ -30,7 +37,7 @@ class Request < ActiveRecord::Base
   end
 
   def next_helpers
-    Helper.within(range, origin: self).where { (id << my{self.helpers}) & (validated == true) }.order('random()')
+    Helper.where { (id << my{self.helpers}) & (validated == true) }.order('random()')
   end
 
   # State machine

@@ -1,2 +1,2 @@
 <h1><%= I18n.t "mail.optin_hello" %></h1>
-<%= link_to I18n.t("mail.activate_account"), helpers_confirm_url(confirmation_key: @helper.confirmation_key)%>
+<%= link_to I18n.t("mail.activate_account"), project_helpers_confirm_url(project_id: @helper.project, confirmation_key: @helper.confirmation_key) %>

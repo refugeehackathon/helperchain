@@ -10,12 +10,14 @@
 
 <div class="row">
   <div class="reg-header">
-    <h2><%= I18n.t 'orga.register_title' %></h2>
+    <h2><%= I18n.t 'project.register_title' %></h2>
   </div>
+  <%= f.input :charity, as: :select, include_blank: nil, selected: false%>
   <%= f.input :name, wrapper: :no_label do %>
     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-    <%= f.input_field :name, class: 'form-control', placeholder: I18n.t("orga.name") %>
+    <%= f.input_field :name, class: 'form-control', placeholder: I18n.t("project.name") %>
   <% end %>
+
   <%= f.simple_fields_for @manager do |b| %>
 
     <%= b.input :email, wrapper: :no_label do %>
@@ -30,10 +32,10 @@
       <span class="input-group-addon"><i class="fa fa-key"></i></span>
       <%= b.input_field :password_confirmation, class: 'form-control' %>
     <% end %>
-  <% end unless @manager.nil? %>
+  <% end %>
   <div class="row">
     <div class="col-md-12">
-      <%= link_to I18n.t("orga.have_already_account"), new_manager_session_path %>
+      <%= link_to I18n.t("project.have_already_account"), new_manager_session_path %>
       <%= f.button :submit, class: 'btn-u pull-right' %>
     </div>
   </div>

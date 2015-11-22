@@ -6,16 +6,19 @@ Rails.application.routes.draw do
   get 'imprint' => 'static#contactimprint'
 
   # Controllers
-  resources :projects
-  resources :requests do
-    get 'accept'
-    get 'decline'
+  get 'projects/charities'
+  resources :projects do
+    scope :helpers do
+      get 'confirm/:confirmation_key' => 'helpers#confirm', as: :helpers_confirm
+      get 'unsubscribe' => 'helpers#delete', as: :helpers_unsubscribe
+    end
+    resources :helpers
+
+    resources :requests do
+      get 'accept'
+      get 'decline'
+    end
   end
-  scope :helpers do
-    get 'confirm/:confirmation_key' => 'helpers#confirm', as: :helpers_confirm
-    get 'unsubscribe' => 'helpers#delete', as: :helpers_unsubscribe
-  end
-  resources :helpers
 
   if ENV['ENABLE_ADMIN'] == "TRUE"
     # Sidekiq

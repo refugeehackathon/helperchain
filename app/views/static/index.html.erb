@@ -3,28 +3,16 @@
 <div class="purchase">
   <div class="container">
     <div class="row">
-      <%= simple_form_for @helper,
-        html: { class: 'sky-form' } do |f| %>
       <div class="col-md-8">
         <span><%= I18n.t "home.join_h" %></span>
         <p><%= I18n.t "home.join_p" %></p>
       </div>
       <div class="col-md-4">
-        <%= f.input :email, wrapper: :no_label do %>
-          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-          <%= f.input_field :email, class: 'form-control' %>
-        <% end %>
-        <%= f.input :location, wrapper: :no_label do %>
-          <div class="input-group-addon"><i class="fa fa-location-arrow"></i></div>
-          <%= f.input_field :location, class: 'form-control' %>
-        <% end %>
-        <%= f.text_field :lat, required: true, hidden: true %>
-        <%= f.text_field :long, required: true, hidden: true %>
-        <button type="submit" class="btn-u pull-right">
-          <i class="fa fa-heart"></i> <%= I18n.t "home.join_button"%>
-        </button>
+        <span><%= t 'home.get_started' %></span>
+        <p><%= t 'home.get_started_p' %></p>
+
+        <%= link_to fa_icon("heart", text: I18n.t("home.sign_up")), new_project_path(), class: "btn-u pull-right" %>
       </div>
-      <% end %>
     </div>
   </div>
 </div><!--/row-->
@@ -36,7 +24,7 @@
   <div class="row margin-bottom-30">
     <div class="col-md-4">
       <div class="service">
-        <i class="fa fa-check-circle-o service-icon"></i>
+        <i class="fa fa-users service-icon"></i>
         <div class="desc">
           <h4><%= I18n.t "home.step1_h" %></h4>
           <p><%= I18n.t "home.step1_p" %></p>
@@ -65,51 +53,5 @@
   <!-- End Service Blokcs -->
 </div>
 
-<!--=== Sign-Out Block ===-->
-<div class="purchase">
-  <div class="container">
-    <div class="row">
-      <%= simple_form_for @helper,
-        html: {class: 'sky-form'},
-        url: helpers_unsubscribe_path,
-        method: :get do |f| %>
-        <div class="col-md-8">
-          <span><%= I18n.t "home.leave_h" %></span>
-          <p><%= I18n.t "home.leave_p" %></p>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :email, wrapper: :no_label do %>
-            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-            <%= f.input_field :email, class: 'form-control' %>
-          <% end %>
-          <button type="submit" class="btn-u pull-right">
-            <i class="fa fa-heart"></i> <%= I18n.t("home.leave")%>
-          </button>
-        </div>
-      <% end %>
-    </div>
-  </div><!--/row-->
-  <!-- End Sign-Out Block -->
-</div>
 
 <!-- End Content Part -->
-<script type="text/javascript">
- jQuery(function() {
-   var completer;
-
-   completer = new GmapsCompleter({
-     inputField: '#helper_location',
-     country: "Germany",
-     region: "de",
-     positionOutputter: function(latlng) {
-       $('#helper_lat').val(latlng.lat());
-       $('#helper_long').val(latlng.lng());
-     }
-   });
-
-   completer.autoCompleteInit({
-     country: "Germany",
-     region: "DE"
-   });
- });
-</script>

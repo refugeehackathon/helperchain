@@ -1,9 +1,10 @@
 class RequestsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
   before_action :set_project, except: [:accept, :decline]
   before_action :set_request, only: [:show, :edit, :update, :destroy, :accept, :decline]
 
   def index
+    @requests = @project.requests
     @requests = @requests.order(created_at: :desc)
     @title = I18n.t "request.manage_requests"
   end
@@ -15,18 +16,20 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
-    @request = Request.new project: current_manager.project, member_in_charge: current_manager, timeout: 5
+    @request = Request.new project: current_manager.project, manager_in_charge: current_manager, timeout: 5
     @request.start = Time.now
     @request.end = @request.start.change({hour: 18, min: 0, sec: 0})
     if @request.end < @request.start
       @request.end += 1.day
     end
     @title = I18n.t "request.create"
+    render '_form'
   end
 
   # GET /requests/1/edit
   def edit
     @title = @request.name
+    render '_form'
   end
 
   # POST /requests
@@ -35,20 +38,20 @@ class RequestsController < ApplicationController
     if @request.save
       Rails.logger.info("Request created")
       RequestWorker.perform_at(@request.start, @request.id)
-      redirect_to @request, notice: I18n.t("request.created_successfully")
+      redirect_to project_request_path(@project, @request), notice: I18n.t("request.created_successfully")
     else
       @title = I18n.t "request.create"
-      render :new
+      render '_form'
     end
   end
 
   # PATCH/PUT /requests/1
   def update
     if @request.update(request_params)
-      redirect_to @request, notice: I18n.t("request.updated_successfully")
+      redirect_to project_requests_path(@project, @request), notice: I18n.t("request.updated_successfully")
     else
       @title = @request.name
-      render :edit
+      render '_form'
     end
   end
 
@@ -72,7 +75,7 @@ class RequestsController < ApplicationController
 
   private
   def set_project
-    @project = current_manager.project
+    @project = Project.friendly.find(params[:project_id])
     raise ActiveRecord::RecordNotFound if @project.nil?
   end
 
@@ -103,6 +106,6 @@ class RequestsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def request_params
-    params.require(:request).permit(:name, :description, :lat, :long, :amount, :start, :end, :timeout, :range, :project_id, :location, :address_information, :member_in_charge_id)
+    params.require(:request).permit(:name, :description, :amount, :start, :end, :timeout, :range, :project_id, :manager_in_charge_id)
   end
 end

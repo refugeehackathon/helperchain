@@ -1,34 +1,38 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  load_and_authorize_resource
+  load_resource except: [:show]
+  authorize_resource
   before_action :set_project, only: [:show, :edit, :update]
 
   # GET /projects
-  def index
-    @projects = Project.all
-    @title = I18n.t "orga.all_title"
+  def charities
+    @projects = Project.where charity: true
+    @title = I18n.t "project.all_title"
   end
 
   # GET /projects/1
   def show
-    @title = I18n.t "orga.manage"
+    @charity = Project.friendly.find params[:id]
+    @title = I18n.t "project.manage"
   end
+
 
   # GET /projects/new
   def new
     @project = Project.new
+    @project.charity = false
     @manager = Manager.new
-    @title = I18n.t "orga.new_title"
+    @title = I18n.t "project.new_title"
   end
 
   # GET /projects/1/edit
   def edit
-    @title = I18n.t "orga.edit"
+    @title = I18n.t "project.edit"
   end
 
   # POST /projects
   def create
-    @title = I18n.t "orga.new_title"
+    @title = I18n.t "project.new_title"
     @project = Project.new(project_params)
     @manager = Manager.new params[:project][:manager].permit(:email, :password, :password_confirmation)
     begin
@@ -63,11 +67,11 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.friendly.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name, :charity)
     end
 end

@@ -15,7 +15,7 @@
     <% unless @helper.nil? %>
     <p>
       <%= I18n.t "mail.unsubscribe_text"%><br />
-      <%= link_to I18n.t("mail.optout_link"), helpers_unsubscribe_url(email: @helper.email, confirmation_key: @helper.confirmation_key) %>
+      <%= link_to I18n.t("mail.optout_link"), project_helpers_unsubscribe_url(project_id: @helper.project, email: @helper.email, confirmation_key: @helper.confirmation_key) %>
     </p>
     <% end %>
   </body>

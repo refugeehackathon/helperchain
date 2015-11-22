@@ -7,9 +7,11 @@ en:
     manage_requests: "Manage requests"
     manage_project: "Manage project"
     project_list: "Projects"
-  orga:
+    charities: "Charities"
+    how_it_works: "How it works"
+  project:
     hello_member: "Hi %{email}"
-    login: "Project Login"
+    login: "Login"
     logout: "Logout"
     register: "Project Registration"
   layout:
