@@ -14,9 +14,13 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6 checkbox">
-        <!-- <label><input type="checkbox"> Stay signed in</label> -->
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <div class="col-md-6">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="" name="orga_member[remember_me]" id="orga_member_remember_me">
+            <%= I18n.t "simple_form.remember_me" %>
+          </label>
+        </div>
       </div>
       <div class="col-md-6">
         <%= f.button :submit, "Login", class: 'btn-u pull-right' %>

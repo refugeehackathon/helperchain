@@ -18,6 +18,13 @@ en:
         address_information: "Additional information for the address to help the helpers to find you"
         start: "When to start searching for helpers (default now)"
         end: "What is the latest time you need to know whether you have enough helpers?"
+    placeholders:
+      defaults:
+        email: "E-Mail"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        location: "Town or zip code"
+    remember_me: "Remember me"
     # Labels and hints examples
     # labels:
     #   defaults:

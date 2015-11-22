@@ -15,3 +15,9 @@
 //= require jquery-ui
 //= require gmaps-auto-complete
 //= require_tree .
+
+
+
+$(function(){
+    $("input.datetimepicker").datetimepicker();
+});

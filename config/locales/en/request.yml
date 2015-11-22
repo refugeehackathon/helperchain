@@ -1,0 +1,22 @@
+en:
+  request:
+    address: "Address"
+    thanks_for_helping: "Thank you for helping %{organization}"
+    thanks_for_not_helping: "Sorry that you can't help"
+    thanks_for_not_helping_text: "Hopefully you will have time the next time"
+    created_successfully: 'Request was successfully created.'
+    updated_successfully: 'Request was successfully updated.'
+    manage_requests: "Manage Requests"
+    create: "Create request"
+  request_mailer:
+    no_more_helpers:
+      subject: "No more helpers available"
+      intro: "We weren't able to find the amount of helpers you asked for. But these peoples are happy to help you:"
+    request_done:
+      subject: "Enough helpers accepted your request!"
+      intro: "We have found the helpers you asked for:"
+    helper_request:
+      subject: "%{organization} is asking for help"
+      answer_until: "Please decide until %{deadline} if you can help."
+      accept: "Click here if you can help"
+      decline: "Click here if you can't help"

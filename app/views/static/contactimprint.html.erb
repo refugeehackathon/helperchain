@@ -1,16 +1,15 @@
-    <!--=== Content Part ===-->
-    <div class="container content-sm">
-    	<!-- Service Blocks -->
-    	<div class="row">
-        	<div class="col-md-12">
-            <h4><%= I18n.t "contact_h" %></h4>
-            <p><%= I18n.t "contact_p" %></p>
-            <h4><%= I18n.t "liab_h" %></h4>
-            <p><%= I18n.t "liab_p1" %></p>
-            <p><%= I18n.t "liab_p2" %></p>
-        	</div>
-    	</div>
-    	<!-- End Service Blokcs -->
-
-    </div><!--/container-->
-    <!-- End Content Part -->
+<!--=== Content Part ===-->
+<div class="container content-sm">
+  <!-- Service Blocks -->
+  <div class="row">
+    <div class="col-md-12">
+      <h4><%= I18n.t "contact_h" %></h4>
+      <p><a href="mailto:<%= ENV['CONTACT_EMAIL'] %>"><%= ENV['CONTACT_EMAIL'] %></a></p>
+      <h4><%= I18n.t "liab_h" %></h4>
+      <p><%= I18n.t "liab_p1" %></p>
+      <p><%= I18n.t "liab_p2" %></p>
+    </div>
+  </div>
+  <!-- End Service Blocks -->
+</div><!--/container-->
+<!-- End Content Part -->

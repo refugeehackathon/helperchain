@@ -33,6 +33,7 @@
   <% end unless @orga_member.nil? %>
   <div class="row">
     <div class="col-md-12">
+      <%= link_to I18n.t("orga.have_already_account"), new_orga_member_session_path %>
       <%= f.button :submit, class: 'btn-u pull-right' %>
     </div>
   </div>

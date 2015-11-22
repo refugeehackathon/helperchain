@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
 
-  devise_for :orga_members
+  devise_for :orga_members, controllers: {
+                 sessions: 'orga_members/sessions'
+               }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

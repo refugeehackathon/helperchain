@@ -19,6 +19,8 @@ gem "rails_admin"
 
 # GUI
 gem 'simple_form'
+gem 'rails-i18n'
+gem 'devise-i18n'
 
 # JS
 gem 'jquery-rails'

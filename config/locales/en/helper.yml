@@ -1,0 +1,10 @@
+en:
+  helpers:
+    unsubscribe_text: "Unsubscribe:"
+    join_success: "You will receive an e-mail with your account activation link."
+    join_error: "An error occured."
+    confirmed: "Thank you for confirming your e-mail"
+    no_confirmation: "Could not find that helper"
+    leave_success: "You have been unsubscribed successfully"
+    optout_sent: "You will receive an e-mail for confirming your account deactivation."
+    optout_link: "Unsubscribe"
