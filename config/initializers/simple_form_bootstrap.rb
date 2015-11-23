@@ -41,11 +41,12 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :placeholder
     b.wrapper tag: 'div', class: 'controls' do |input|
+
+      input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
+      input.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
       input.wrapper tag: 'div', class: "input-group margin-bottom-20" do |append|
         append.use :input, class: 'form-control'
       end
-      input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
-      input.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
     end
   end
 

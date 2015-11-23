@@ -1,5 +1,3 @@
-<h2>Resend confirmation instructions</h2>
-
 <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
   <%= f.full_error :confirmation_token %>
@@ -9,7 +7,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
+    <%= f.button :submit, I18n.t('manager.resend_confirmation') %>
   </div>
 <% end %>
 

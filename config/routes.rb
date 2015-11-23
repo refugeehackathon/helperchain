@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :managers, controllers: {
+                 confirmations: 'managers/confirmations',
                  sessions: 'managers/sessions'
                }
 

@@ -19,9 +19,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
-    @project.charity = false
     @manager = Manager.new
+    @manager.project = Project.new
+    @manager.project.charity = false
     @title = I18n.t "project.new_title"
   end
 
@@ -33,19 +33,19 @@ class ProjectsController < ApplicationController
   # POST /projects
   def create
     @title = I18n.t "project.new_title"
-    @project = Project.new(project_params)
     @manager = Manager.new params[:project][:manager].permit(:email, :password, :password_confirmation)
+    @manager.project = Project.new(project_params)
     begin
       ActiveRecord::Base.transaction do
-        if @project.save
-          @manager.project = @project
-          if @manager.save
+        if @manager.save
+          if @manager.project.save
             sign_in @manager
             redirect_to @project, notice: 'Project was successfully created.'
           else
             throw "error"
           end
         else
+          @manager.project.validate
           throw "error"
         end
       end
