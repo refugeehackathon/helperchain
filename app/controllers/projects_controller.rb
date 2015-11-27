@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @title = I18n.t "project.edit"
+    render "_form"
   end
 
   # POST /projects
@@ -59,7 +60,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       redirect_to @project, notice: 'Project was successfully updated.'
     else
-      render :edit
+      render "_form"
     end
   end
 
@@ -71,6 +72,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:name, :charity)
+      params.require(:project).permit(:name, :charity, :description)
     end
 end

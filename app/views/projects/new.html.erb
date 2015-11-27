@@ -1,7 +1,42 @@
 <div class="row">
 
   <div class="col-md-6">
-    <%= render 'form' %>
+    <%= simple_form_for(@manager.project, html: {class: "reg-page"}) do |f| %>
+      <div class="row">
+        <!-- <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3"> -->
+        <div class="reg-header">
+          <h2><%= I18n.t 'project.register_title' %></h2>
+        </div>
+        <%= f.input :charity, as: :select, include_blank: nil, selected: false%>
+        <%= f.input :name, wrapper: :no_label do %>
+          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+          <%= f.input_field :name, class: 'form-control', placeholder: I18n.t("project.name") %>
+        <% end %>
+
+        <%= f.simple_fields_for @manager do |b| %>
+          <%= b.input :email, wrapper: :no_label do %>
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <%= b.input_field :email, class: 'form-control' %>
+          <% end %>
+          <%= b.input :password, wrapper: :no_label do %>
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= b.input_field :password, class: 'form-control' %>
+          <% end %>
+          <%= b.input :password_confirmation, wrapper: :no_label do %>
+            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <%= b.input_field :password_confirmation, class: 'form-control' %>
+          <% end %>
+        <% end %>
+        <div class="row">
+          <div class="col-md-12">
+            <%= link_to I18n.t("project.have_already_account"), new_manager_session_path %>
+            <%= f.button :submit, class: 'btn-u pull-right' %>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div><!--/row-->
+    <% end %>
+
   </div>
   <div class="col-md-6">
     <h2><%= I18n.t "project.register_advantages" %></h2>

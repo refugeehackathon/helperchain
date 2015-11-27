@@ -10,7 +10,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
-        <td><%= link_to t("project.subscribe"), new_project_helper_path(project, invite_key: project.invite_key) %></td>
+        <td><%= link_to fa_icon("heart", text: I18n.t("project.subscribe")), new_project_helper_path(project, invite_key: project.invite_key), class: "btn btn-u" %></td>
       </tr>
     <% end %>
   </tbody>

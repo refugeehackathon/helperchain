@@ -29,3 +29,6 @@ en:
     helper_unsubscribe: "Unsubscribe helpers"
     requests_accepted: "Number of accepted requests"
     add_manager: "Add manager"
+    description: "Project description"
+    edit: "Edit project"
+    about: "About %{project}"
