@@ -2,3 +2,11 @@ en:
   manager:
     edit: "Edit Account"
     resend_confirmation: "Resend confirmation instructions"
+    is_admin: "Admin"
+    requests: "Requests"
+    create: "Add Manager"
+    create_success: "Successfully added %{manager}"
+    edit: "Edit %{manager}"
+    edit_success: "Updated %{manager} successfully"
+    destroy_success: "Deleted manager successfully"
+    cannot_delete_last_admin: "The last admin cannot be deleted"

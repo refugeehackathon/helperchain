@@ -3,44 +3,32 @@ class Ability
 
   def initialize(user)
     can :create, Project if user.nil?
-    can :index, Project
     can :charities, Project
     can :create, Helper
-    can :delete, Helper
     can :unsubscribe, Helper
     can :confirm, Helper
 
     if not user.nil?
-      can :create, Request
+      # Project
       can :show, Project, id: user.project_id
-      can :manage, Project, id: user.project_id
-      can :manage, Request, project: user.project
-      can :edit, Manager, id: user.id
+      # Requests
+      can :create, Request
+      can :show, Request, project: user.project
+      can :manage, Request, manager_in_charge_id: user.id
+      # Manager
+      can [:edit, :update], Manager, id: user.id
+      can :show, Manager, project: user.project
+      # Helper
+      can [:subscribe_many,
+           :subscribe_many_post,
+           :unsubscribe_many,
+           :unsubscribe_many_post], Helper, project: user.project
+      # Admin stuff
+      if user.is_admin
+        can :manage, Project, id: user.project_id
+        can :manage, Helper, project: user.project
+        can :manage, Manager, project: user.project
+      end
     end
-    # Define abilities for the passed in user here. For example:
-    #
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on.
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   end
 end

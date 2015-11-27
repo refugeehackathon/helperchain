@@ -20,6 +20,7 @@ en:
         end: "What is the latest time you need to know whether you have enough helpers?"
     placeholders:
       defaults:
+        name: "Name"
         email: "E-Mail"
         password: "Password"
         password_confirmation: "Confirm Password"

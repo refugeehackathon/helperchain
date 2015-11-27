@@ -1,0 +1,4 @@
+<%= simple_form_for(:helpers, url: project_helpers_unsubscribe_many_post_path(@project)) do |f| %>
+  <%= f.input :mails, as: :text, hint: I18n.t("helpers.subscribe_mails")%>
+  <%= f.button :submit, class: 'btn-u pull-right', value: I18n.t("helpers.unsubscribe_many") %>
+<% end %>

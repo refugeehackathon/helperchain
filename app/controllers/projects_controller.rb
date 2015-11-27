@@ -1,8 +1,7 @@
 # coding: utf-8
 class ProjectsController < ApplicationController
-  load_resource except: [:show]
-  authorize_resource
   before_action :set_project, only: [:show, :edit, :update]
+  authorize_resource
 
   # GET /projects
   def charities
@@ -12,8 +11,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @charity = Project.friendly.find params[:id]
-    @title = I18n.t "project.manage"
+    @project = Project.friendly.find params[:id]
+    @title = I18n.t "project.manage", project: @project.name
   end
 
 

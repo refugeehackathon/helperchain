@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>State</th>
+      <th>Number of helpers</th>
+      <th>Start</th>
+      <th>End</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.name %></td>
+        <td><%= request.state %></td>
+        <td><%= request.confirmed_helpers.count %> / <%= request.amount %></td>
+        <td><%= request.start %></td>
+        <td><%= request.end %></td>
+        <td>
+          <%= link_to fa_icon('eye', text: 'Show'), project_request_path(@project, request),
+          class: "btn btn-info btn-xs" %>
+          <%= link_to fa_icon('pencil', text: 'Edit'), edit_project_request_path(@project, request),
+          class: "btn btn-warning btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

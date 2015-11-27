@@ -4,6 +4,7 @@ en:
   password_confirmation: "Confirm Password"
   email: "E-Mail"
   location: "Town or zip code"
+  actions: "Actions"
   # index
   leave_error: "An error occured."
   contact_h: "Contact"

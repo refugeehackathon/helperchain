@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
-  authorize_resource
   before_action :set_project, except: [:accept, :decline]
   before_action :set_request, only: [:show, :edit, :update, :destroy, :accept, :decline]
+  authorize_resource
 
   def index
     @requests = @project.requests

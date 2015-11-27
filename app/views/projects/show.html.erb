@@ -1,9 +1,59 @@
-<p id="notice"><%= notice %></p>
+<h2><%= I18n.t "project.num_of_managers", count: @project.managers.count %></h2>
+<% if can? :create, @project.managers.first %>
+  <%= link_to fa_icon("user-plus", text: I18n.t("project.add_manager")), new_project_manager_path(@project), class: "btn-u" %>
+<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= I18n.t "email" %></th>
+      <th><%= I18n.t "actions" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @project.managers.each do |manager| %>
+      <tr>
+        <td>
+          <%= manager.display_name%>
+          <%  if manager.is_admin %>
+            <strong class="cred">(<%= I18n.t("manager.is_admin")%>)</strong>
+          <% end %>
+        </td>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+        <td>
+          <%= link_to fa_icon('eye', text: 'Show'), project_manager_path(@project, manager),
+          class: "btn btn-info btn-xs" %>
+          <% if can? :edit, manager %>
+            <%= link_to fa_icon('pencil', text: 'Edit'), edit_project_manager_path(@project, manager),
+            class: "btn btn-warning btn-xs" %>
+          <% elsif can? :destroy, manager %>
+            <%= link_to fa_icon('trash', text: 'Delete'), project_manager_path(@project, manager),
+            class: "btn btn-danger btn-xs",
+            method: :delete%>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<h2><%= I18n.t "project.num_of_helpers", count: @project.helpers.count %></h2>
+<%= link_to fa_icon("user-plus", text: I18n.t("project.helper_subscribe")), project_helpers_subscribe_many_path(@project), class: "btn-u" %>
+<%= link_to fa_icon("ban", text: I18n.t("project.helper_unsubscribe")), project_helpers_unsubscribe_many_path(@project), class: "btn-u" %>
+<% if can? :show, @project.helpers.first %>
+  <table  class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= I18n.t "email" %></th>
+        <th><%= I18n.t "project.requests_accepted" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project.helpers.each do |helper| %>
+        <tr>
+          <td><%= helper.contact_address %></td>
+          <td><%= helper.accepted_requests.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

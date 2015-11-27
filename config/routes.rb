@@ -10,9 +10,14 @@ Rails.application.routes.draw do
   resources :projects do
     scope :helpers do
       get 'confirm/:confirmation_key' => 'helpers#confirm', as: :helpers_confirm
-      get 'unsubscribe' => 'helpers#delete', as: :helpers_unsubscribe
+      get 'unsubscribe' => 'helpers#unsubscribe', as: :helpers_unsubscribe
+      get 'subscribe_many' => 'helpers#subscribe_many', as: :helpers_subscribe_many
+      post 'subscribe_many' => 'helpers#subscribe_many_post', as: :helpers_subscribe_many_post
+      get 'unsubscribe_many' => 'helpers#unsubscribe_many', as: :helpers_unsubscribe_many
+      post 'unsubscribe_many' => 'helpers#unsubscribe_many_post', as: :helpers_unsubscribe_many_post
     end
     resources :helpers
+    resources :managers
 
     resources :requests do
       get 'accept'
