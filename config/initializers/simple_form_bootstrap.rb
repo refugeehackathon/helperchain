@@ -11,38 +11,12 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :prepend, tag: 'div', class: "control-group", error_class: 'has-error' do |b|
+  config.wrappers :no_label, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
-    b.use :label
-    b.wrapper tag: 'div', class: 'controls' do |input|
-      input.wrapper tag: 'div', class: 'input-prepend' do |prepend|
-        prepend.use :input
-      end
-      input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
+    b.wrapper tag: 'div', class: 'controls form-group margin-bottom-20' do |input|
       input.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
-    end
-  end
-
-  config.wrappers :append, tag: 'div', class: "control-group", error_class: 'has-error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.use :label
-    b.wrapper tag: 'div', class: 'controls' do |input|
-      input.wrapper tag: 'div', class: 'input-append' do |append|
-        append.use :input, class: 'form-control'
-      end
-      input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
-      input.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
-    end
-  end
-
-  config.wrappers :no_label, tag: 'div', class: "control-group", error_class: 'has-error' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.wrapper tag: 'div', class: 'controls' do |input|
-      input.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
-      input.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
+      input.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
       input.wrapper tag: 'div', class: "input-group margin-bottom-20" do |append|
         append.use :input, class: 'form-control'
       end

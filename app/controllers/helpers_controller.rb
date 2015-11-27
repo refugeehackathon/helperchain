@@ -4,11 +4,13 @@ class HelpersController < ApplicationController
   require 'securerandom'
 
   def new
+    raise CanCan::AccessDenied unless params[:invite_key] == @project.invite_key
     @helper = Helper.new
     @title = I18n.t("project.subscribe_to", project: @project.name)
   end
 
   def create
+    raise CanCan::AccessDenied unless params[:invite_key] == @project.invite_key
     @helper = Helper.new params[:helper].permit(:email)
     @helper.project = @project
     if @helper.save

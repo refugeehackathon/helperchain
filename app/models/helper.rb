@@ -27,6 +27,8 @@ class Helper < ActiveRecord::Base
 
   private
   def generate_confirmation_key
-    self.confirmation_key = SecureRandom.urlsafe_base64
+    if self.confirmation_key.nil?
+      self.confirmation_key = SecureRandom.urlsafe_base64
+    end
   end
 end

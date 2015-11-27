@@ -1,5 +1,5 @@
 <div class="row">
-<%= simple_form_for [@project, @helper],
+<%= simple_form_for @helper, url: project_helpers_path(@project, invite_key: @project.invite_key),
   html: { class: 'sky-form' } do |f| %>
   <div class="col-md-4">
     <%= f.input :email, wrapper: :no_label do %>
