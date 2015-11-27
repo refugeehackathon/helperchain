@@ -13,6 +13,7 @@ en:
   new_request: "New request"
   # misc
   email: "E-Mail"
+  password: "Password"
   location: "Town or zip code"
   # index
   leave_error: "An error occured."

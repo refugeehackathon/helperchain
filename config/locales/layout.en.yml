@@ -1,0 +1,23 @@
+en:
+  nav:
+    toggle_navigation: Toggle navigation
+    faq: "FAQ"
+    for_organizations: "For organizations"
+    imprint: "Imprint"
+    manage_requests: "Manage requests"
+    manage_organization: "Manage organization"
+    organization_list: "Organizations"
+  orga:
+    hello_member: "Hi %{email}"
+    login: "Organization Login"
+    logout: "Logout"
+    register: "Organization Registration"
+  layout:
+    pure_title: "Helperchain – The digital chain of help"
+    title: "Helperchain – %{title}"
+    footer:
+      html: <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
+        <p>Duis eleifend fermentum ante ut aliquam. Cras mi risus, dignissim sed adipiscing ut, placerat non arcu.</p>
+    contact_us: Contact us
+    contact_mail: "E-Mail"
+    useful_links: "Links"
