@@ -2,15 +2,14 @@ en:
   home:
     # Join Header
     join_h: "helperchain - The digital chain of help"
-    join_p: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos."
-    join_button: "Join the list!"
+    join_p: "helperchain helps you to find faster and more efficient people that are happy to help you! Stop spamming Facebook or writing E-Mails to hundreds of people – We will find the helpers for you without spamming and annoying a lot of people"
     # Steps
     step1_h: "Add your helpers"
-    step1_p: "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem..."
+    step1_p: "Add E-Mails from people that allowed you to contact them or provide them your unique invitation key"
     step2_h: "Submit a request"
-    step2_p: "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem..."
+    step2_p: "Tell us how many people you need to fullfill the task and what the task is about"
     step3_h: "Get help"
-    step3_p: "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem..."
+    step3_p: "We will contact your helpers and find the amount of helpers you need. "
     # Leave
     leave: "Leave the list!"
     leave_h: "Stopping your support?"

@@ -38,12 +38,8 @@ class ProjectsController < ApplicationController
     begin
       ActiveRecord::Base.transaction do
         if @manager.save
-          if @manager.project.save
-            sign_in @manager
-            redirect_to @project, notice: 'Project was successfully created.'
-          else
-            throw "error"
-          end
+          sign_in @manager
+          redirect_to @project, notice: 'Project was successfully created.'
         else
           @manager.project.validate
           throw "error"

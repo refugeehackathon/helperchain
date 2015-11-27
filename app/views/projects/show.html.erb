@@ -19,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @project.managers.each do |manager| %>
+    <% @project.managers.order(is_admin: :desc).each do |manager| %>
       <tr>
         <td>
           <%= manager.display_name%>
@@ -34,7 +34,8 @@
           <% if can? :edit, manager %>
             <%= link_to fa_icon('pencil', text: 'Edit'), edit_project_manager_path(@project, manager),
             class: "btn btn-warning btn-xs" %>
-          <% elsif can? :destroy, manager %>
+            <% end %>
+          <% if can? :delete, manager %>
             <%= link_to fa_icon('trash', text: 'Delete'), project_manager_path(@project, manager),
             class: "btn btn-danger btn-xs",
             method: :delete%>

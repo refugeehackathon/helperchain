@@ -18,8 +18,9 @@ en:
     pure_title: "Helperchain – The digital chain of help"
     title: "Helperchain – %{title}"
     footer:
-      html: <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
-        <p>Duis eleifend fermentum ante ut aliquam. Cras mi risus, dignissim sed adipiscing ut, placerat non arcu.</p>
+      html: <p>helperchain is a service to help you to find the right people for your task.</p>
+        <p>It is primary focused on non-profit organizations that have spontaneous demand for help but can be used also for other needs</p>
     contact_us: Contact us
     contact_mail: "E-Mail"
     useful_links: "Links"
+    made_with_love: "Made with ♥ in Berlin, Düsseldorf, Dresden and Munich"
