@@ -6,8 +6,12 @@
     <%= f.input :description_after_accept %>
     <%= f.input :amount %>
 
-    <%= f.input :start, as: :datetimepicker %>
-    <%= f.input :end, as: :datetimepicker %>
+    <%= f.input :start,
+                :as => :datetimepicker,
+                :input_html => { :value => localize(f.object.start) } %>
+    <%= f.input :end,
+                :as => :datetimepicker,
+                :input_html => { :value => localize(f.object.end) } %>
     <%= f.input :manager_in_charge_id, as: :select, collection: @project.managers, label_method: :email, include_blank: nil %>
     <%= f.input :timeout %>
   </fieldset>

@@ -18,5 +18,7 @@
 
 
 $(function(){
-    $("input.datetimepicker").datetimepicker();
+    $("input.datetimepicker").datetimepicker({
+      format: 'd M Y, H:i'
+    });
 });

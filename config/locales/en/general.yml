@@ -1,4 +1,7 @@
 en:
+  time:
+    formats:
+      default: "%d %b %Y, %H:%M"
   # misc
   password: "Password"
   password_confirmation: "Confirm Password"
