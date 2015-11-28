@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'imprint' => 'static#contactimprint'
 
   # Controllers
-  get 'projects/charities'
+  get 'projects/public'
   resources :projects do
     scope :helpers do
       get 'confirm/:confirmation_key' => 'helpers#confirm', as: :helpers_confirm

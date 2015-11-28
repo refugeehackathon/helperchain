@@ -4,8 +4,8 @@ class ProjectsController < ApplicationController
   authorize_resource
 
   # GET /projects
-  def charities
-    @projects = Project.where charity: true
+  def public
+    @projects = Project.where is_public: true
     @title = I18n.t "project.all_title"
   end
 
@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
   def new
     @manager = Manager.new
     @manager.project = Project.new
-    @manager.project.charity = false
+    @manager.project.is_public = true
     @title = I18n.t "project.new_title"
   end
 
@@ -68,6 +68,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:name, :charity, :description)
+      params.require(:project).permit(:name, :is_public, :description)
     end
 end

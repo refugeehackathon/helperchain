@@ -7,7 +7,7 @@
         <div class="reg-header">
           <h2><%= I18n.t 'project.register_title' %></h2>
         </div>
-        <%= f.input :charity, as: :select, include_blank: nil, selected: false%>
+        <%= f.input :is_public, as: :select, include_blank: nil, selected: true%>
         <%= f.input :name, wrapper: :no_label do %>
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
           <%= f.input_field :name, class: 'form-control', placeholder: I18n.t("project.name") %>

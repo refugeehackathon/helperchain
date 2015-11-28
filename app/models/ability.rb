@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     can :create, Project if user.nil?
-    can :charities, Project
+    can :public, Project
     can :create, Helper
     can :unsubscribe, Helper
     can :confirm, Helper

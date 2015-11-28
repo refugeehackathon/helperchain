@@ -7,7 +7,7 @@ en:
     manage_requests: "Manage requests"
     manage_project: "Manage project"
     project_list: "Projects"
-    charities: "Charities"
+    public_projects: "Public projects"
     how_it_works: "How it works"
   project:
     hello_member: "Hi %{email}"
