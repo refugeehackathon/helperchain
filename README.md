@@ -88,7 +88,13 @@ not know what to do ;)
 ## Push it to Gerrit
 
 You can not push directly to the `master` branch, but you have to push
-to the `refs/for/master` branch
+to the `refs/for/master` branch:
+
+```
+git push origin HEAD:refs/for/master
+```
+
+That's all, now you can view your change in the [web interface](https://gerrit.azapps.de/r/#/q/status:open)
 
 
 # License
