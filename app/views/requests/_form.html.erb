@@ -13,7 +13,6 @@
                 :as => :datetimepicker,
                 :input_html => { :value => localize(f.object.end) } %>
     <%= f.input :manager_in_charge_id, as: :select, collection: @project.managers, label_method: :email, include_blank: nil %>
-    <%= f.input :timeout %>
   </fieldset>
 
   <footer>

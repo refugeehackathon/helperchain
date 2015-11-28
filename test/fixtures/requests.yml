@@ -1,58 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 drk_req_one:
-  organization: drk
   name: DRK One
   description: Help DRK
-  lat: 0.1
-  long: 0.1
   amount: 1
   start: 2015-10-24 18:49:28
   end: 2015-12-24 18:49:28
-  timeout: 5
-  range: 100
-  location: Middleearth
-  member_in_charge: drk_one
+  project_id: 1
+  manager_in_charge_id: 1
 
 drk_req_two:
   name: DRK Two
   description: Help DRK
-  lat: -0.1
-  long: -0.1
   amount: 2
   start: 2015-10-24 18:49:28
   end: 2015-12-24 18:49:28
-  timeout: 5
-  range: 100
-  organization: drk
-  location: Middleearth
-  member_in_charge: drk_two
+  project_id: 1
+  manager_in_charge_id: 1
 
 drk_req_far_away:
   name: DRK Far away
   description: Help DRK
-  lat: 100
-  long: 100
   amount: 1
   start: 2015-10-24 18:49:28
   end: 2015-12-24 18:49:28
-  timeout: 5
-  range: 100
-  organization: drk
-  location: Faraway
-  member_in_charge: drk_two
-
+  project_id: 1
+  manager_in_charge_id: 1
 
 drk_req_with_helpers:
-  organization: drk
   name: DRK With helpers
   description: Help DRK
-  lat: 0.1
-  long: 0.1
   amount: 1
   start: 2015-10-24 18:49:28
   end: 2015-12-24 18:49:28
-  timeout: 5
-  range: 100
-  location: Faraway
-  member_in_charge: drk_two
+  project_id: 1
+  manager_in_charge_id: 1

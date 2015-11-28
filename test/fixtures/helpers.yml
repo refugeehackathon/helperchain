@@ -2,48 +2,30 @@
 
 helper_one:
   email: one@example.com
-  lat: 0
-  long: 0
   score: 100
-  location: Middleearth
   validated: true
 
 helper_one_low:
   email: one_low@example.com
-  lat: 0
-  long: 0
   score: 20
-  location: Middleearth
   validated: true
 
 helper_two:
   email: two@example.com
-  lat: 1
-  long: 1
   score: 100
-  location: Middleearth
   validated: true
 
 helper_three:
   email: three@example.com
-  lat: 2
-  long: 2
   score: 100
-  location: Middleearth
   validated: true
 
 helper_one_unconfirmed:
   email: one_unconfirmed@example.com
-  lat: 0
-  long: 0
   score: 100
-  location: Middleearth
   validated: false
 
 helper_far_away:
   email: far@away.com
-  lat: 100
-  long: 100
   score: 100
-  location: FarAway
   validated: true
