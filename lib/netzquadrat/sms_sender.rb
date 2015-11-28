@@ -54,10 +54,6 @@ module Netzquadrat
         number:  phone_nr,
         # the SMS gateway wasn't able to display umlauts (ÄÖÜ) correctly in the SMS, so I'm replacing them.
         message: transliterate_german_umlauts(message),
-        # I am submitting the (currently invalid) sender nr to the SMS service because if I don't do that
-        # a different one will be used for every SMS, which may confuse the helpers. Later on, the project
-        # manager may be able to add his mobile number, so he will become the sender and can be contacted 
-        # directly.
         oadc:    config[:sender_nr]
       }
       config[:script_name] + "?" + params.to_query
