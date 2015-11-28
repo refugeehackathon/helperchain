@@ -9,7 +9,6 @@
     <%= f.input :start, as: :datetimepicker %>
     <%= f.input :end, as: :datetimepicker %>
     <%= f.input :manager_in_charge_id, as: :select, collection: @project.managers, label_method: :email, include_blank: nil %>
-    <%= f.input :timeout %>
   </fieldset>
 
   <footer>

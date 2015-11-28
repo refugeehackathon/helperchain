@@ -4,6 +4,9 @@ class Request < ActiveRecord::Base
   has_many :request_statuses
   has_and_belongs_to_many :helpers, join_table: :request_statuses
 
+  TIMEOUT_DIVIDER = 10.0
+  MINIMUM_TIMEOUT = 5
+
   rails_admin do
     list do
       field :project
@@ -17,7 +20,9 @@ class Request < ActiveRecord::Base
   end
 
   def timeout_time
-    timeout.minutes
+    total_runtime = ((self.end - self.start).to_i / 60)
+    timeout = (total_runtime / TIMEOUT_DIVIDER).to_i
+    [timeout, MINIMUM_TIMEOUT].max
   end
 
   def last_deadline_from t

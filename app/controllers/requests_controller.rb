@@ -16,7 +16,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
-    @request = Request.new project: current_manager.project, manager_in_charge: current_manager, timeout: 5
+    @request = Request.new project: current_manager.project, manager_in_charge: current_manager
     @request.start = Time.now
     @request.end = @request.start.change({hour: 18, min: 0, sec: 0})
     if @request.end < @request.start
