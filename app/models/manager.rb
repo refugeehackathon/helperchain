@@ -3,7 +3,7 @@ class Manager < ActiveRecord::Base
   belongs_to :project
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :registerable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
+  devise :database_authenticatable, :async,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   belongs_to :project
 

@@ -2,8 +2,10 @@ class Project < ActiveRecord::Base
   has_many :managers
   has_many :requests
   has_many :helpers
-  before_validation :generate_invite_key
-  before_validation :slugify
+  before_validation do
+    generate_invite_key
+    slugify
+  end
   include FriendlyId
   friendly_id :slug
 
@@ -20,8 +22,12 @@ class Project < ActiveRecord::Base
   private
 
   def slugify
-     if self.slug.nil?
-       self.slug = self.name.parameterize
+    if self.slug.nil?
+      # Suggested by http://stackoverflow.com/questions/136793/is-there-a-do-while-loop-in-ruby
+      loop do
+        self.slug = "#{self.name.parameterize}-#{rand(10000)}"
+        break if Project.find_by_slug(self.slug).nil?
+      end
      end
   end
 end

@@ -35,17 +35,10 @@ class ProjectsController < ApplicationController
     @title = I18n.t "project.new_title"
     @manager = Manager.new params[:project][:manager].permit(:email, :password, :password_confirmation)
     @manager.project = Project.new(project_params)
-    begin
-      ActiveRecord::Base.transaction do
-        if @manager.save
-          sign_in @manager
-          redirect_to @project, notice: 'Project was successfully created.'
-        else
-          @manager.project.validate
-          throw "error"
-        end
-      end
-    rescue
+    if @manager.save
+      redirect_to root_path, flash: {success:  I18n.t("project.created")}
+    else
+      @manager.project.validate
       render :new
     end
   end

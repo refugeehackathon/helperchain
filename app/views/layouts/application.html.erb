@@ -83,6 +83,7 @@
                 <%= active_li_link_to I18n.t("nav.manage_requests"), project_requests_path(current_manager.project) %>
               <% else %>
                 <!-- Home -->
+                <%= active_li_link_to I18n.t("home.sign_up"), new_project_path %>
                 <%= active_li_link_to I18n.t("nav.how_it_works"), "#" %>
 
               <% end %>
