@@ -35,6 +35,7 @@ gem 'sinatra', :require => nil
 
 # auth stuff
 gem 'devise'
+gem "devise-async"
 gem "cancancan"
 
 # Dev stuff

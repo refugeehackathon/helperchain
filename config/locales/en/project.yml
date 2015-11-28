@@ -2,7 +2,7 @@ en:
   project:
     subscribe: "Subscribe"
     subscribe_to: "Subscribe to %{project}"
-    is_public?: "This is a is_public project"
+    is_public?: "This is a public project"
     name: "Project Name"
     manage: "Manage %{project}"
     register_advantages: "Advantages"
@@ -32,3 +32,4 @@ en:
     description: "Project description"
     edit: "Edit project"
     about: "About %{project}"
+    created: "Created project. Please confirm your E-Mail"
